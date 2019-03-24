@@ -1,0 +1,25 @@
+@extends('perfil.layout')
+@section('perfil_content')
+    <h4>Veículos</h4>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Cor</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+@endsection
