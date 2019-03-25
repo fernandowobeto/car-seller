@@ -13,7 +13,10 @@
                         <div class="col-md-2">
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="{{route('perfil')}}">Perfil</a></li>
-                                <li><a href="{{route('perfil.marcas')}}">Marcas</a></li>
+                                @if(Auth::user()->isAdmin())
+                                    <li><a href="{{route('perfil.marcas')}}">Marcas</a></li>
+                                    <li><a href="{{route('perfil.modelos')}}">Modelos</a></li>
+                                @endif
                                 <li><a href="{{route('perfil.veiculo.add')}}">Adicionar Veículo</a></li>
                                 <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>
                                 <li><a href="{{route('perfil.mensagens')}}">Mensagens</a></li>
