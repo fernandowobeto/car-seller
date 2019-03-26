@@ -16,9 +16,17 @@ class PerfilMarcaController extends Controller
       return view('perfil.marcas.index', compact('marcas'));
    }
 
-   public function add ()
+   public function form ($id = null)
    {
-      return view('perfil.marcas.form');
+      $marca = null;
+      $action = route('perfil.marca.create');
+
+      if($id){
+         $marca = Marca::find($id);
+         $action = route('perfil.marca.update', ['id' => $id]);
+      }
+
+      return view('perfil.marcas.form', compact('marca', 'action'));
    }
 
    public function create (PerfilMarcaSaveRequest $request)
@@ -30,9 +38,13 @@ class PerfilMarcaController extends Controller
       return redirect()->route('perfil.marcas');
    }
 
-   public function update ()
+   public function update ($id, PerfilMarcaSaveRequest $request)
    {
+      $marca = Marca::find($id);
+      $marca->name = $request->get('name');
+      $marca->save();
 
+      return redirect()->route('perfil.marcas');
    }
 
 }

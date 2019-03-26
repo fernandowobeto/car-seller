@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PerfilController extends Controller
 {
 
    public function index ()
    {
-      return view('perfil.index');
+      $user = User::find(Auth::user()->id);
+
+      return view('perfil.index', compact('user'));
    }
 
    public function veiculos ()

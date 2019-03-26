@@ -1,6 +1,6 @@
 @extends('perfil.layout')
 @section('perfil_content')
-    <h4>Marcas - Salvar</h4>
+    <h4>Combustíveis - Salvar</h4>
     <hr>
     <form action="{{$action}}" method="POST">
         {{csrf_field()}}
@@ -8,8 +8,9 @@
             <label for="name">Descrição</label>
             <input type="text" class="form-control"
                    id="name"
-                   value="{{$marca->name ?? ''}}"
-                   name="name" maxlength="40">
+                   name="name"
+                   value="{{$combustivel->name ?? ''}}"
+                   maxlength="80">
         </div>
         <button type="submit" class="btn btn-default">Salvar</button>
     </form>

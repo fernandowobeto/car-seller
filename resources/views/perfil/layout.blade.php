@@ -7,7 +7,7 @@
                 <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <div class="section-header">
                         <h2>Dashboard de Usuário</h2>
-                        <p>Efetue o login para verificar seus veículos e mensagens</p>
+                        <p>Verifique suas informações pessoais, mensagens e veículos</p>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
@@ -16,6 +16,7 @@
                                 @if(Auth::user()->isAdmin())
                                     <li><a href="{{route('perfil.marcas')}}">Marcas</a></li>
                                     <li><a href="{{route('perfil.modelos')}}">Modelos</a></li>
+                                    <li><a href="{{route('perfil.combustiveis')}}">Combustíveis</a></li>
                                 @endif
                                 <li><a href="{{route('perfil.veiculo.add')}}">Adicionar Veículo</a></li>
                                 <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>

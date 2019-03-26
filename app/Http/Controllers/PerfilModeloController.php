@@ -18,26 +18,39 @@ class PerfilModeloController extends Controller
       return view('perfil.modelos.index', compact('modelos'));
    }
 
-   public function add ()
+   public function form ($id = null)
    {
+      $modelo = null;
+      $action = route('perfil.modelo.create');
+
+      if($id){
+         $modelo = Modelo::find($id);
+         $action =route('perfil.modelo.update', ['id' => $id]);
+      }
+
       $marcas = Marca::all();
 
-      return view('perfil.modelos.form', compact('marcas'));
+      return view('perfil.modelos.form', compact('modelo', 'marcas', 'action'));
    }
 
    public function create (PerfilModeloSaveRequest $request)
    {
-      $marca = new Modelo();
-      $marca->name = $request->get('name');
-      $marca->marca_id = $request->get('marca_id');
-      $marca->save();
+      $modelo = new Modelo();
+      $modelo->name = $request->get('name');
+      $modelo->marca_id = $request->get('marca_id');
+      $modelo->save();
 
       return redirect()->route('perfil.modelos');
    }
 
-   public function update ()
+   public function update ($id, PerfilModeloSaveRequest $request)
    {
+      $modelo = Modelo::find($id);
+      $modelo->name = $request->get('name');
+      $modelo->marca_id = $request->get('marca_id');
+      $modelo->save();
 
+      return redirect()->route('perfil.modelos');
    }
 
 }
