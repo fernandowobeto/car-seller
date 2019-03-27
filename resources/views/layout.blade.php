@@ -71,7 +71,7 @@
                         <ul>
                             <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{route('perfil')}}">Perfil</a></li>
+                                    <li><a href="{{route('perfil.perfil')}}">Perfil</a></li>
                                     <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>
                                     <li><a href="{{route('perfil.mensagens')}}">Minhas Mensagens</a></li>
                                     <li><a href="{{route('logout')}}">Sair</a></li>

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Combustivel;
 use App\Http\Requests\PerfilCombustivelSaveRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PerfilCombustivelController extends Controller
+class CombustivelController extends Controller
 {
 
    public function index ()

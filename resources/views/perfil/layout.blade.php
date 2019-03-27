@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="{{route('perfil')}}">Perfil</a></li>
+                                <li><a href="{{route('perfil.perfil')}}">Perfil</a></li>
                                 @if(Auth::user()->isAdmin())
                                     <li><a href="{{route('perfil.marcas')}}">Marcas</a></li>
                                     <li><a href="{{route('perfil.modelos')}}">Modelos</a></li>

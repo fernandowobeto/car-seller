@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Marca;
 use App\Entities\Modelo;
 use App\Http\Requests\PerfilModeloSaveRequest;
 use App\Repositories\Modules\PerfilModeloRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PerfilModeloController extends Controller
+class ModeloController extends Controller
 {
 
    public function index (PerfilModeloRepository $repository)

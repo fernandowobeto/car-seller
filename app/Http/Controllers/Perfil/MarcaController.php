@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Marca;
 use App\Http\Requests\PerfilMarcaSaveRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PerfilMarcaController extends Controller
+class MarcaController extends Controller
 {
 
    public function index ()
