@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Perfil;
 use App\Entities\Marca;
 use App\Entities\Modelo;
 use App\Http\Requests\PerfilModeloSaveRequest;
-use App\Repositories\Modules\PerfilModeloRepository;
+use App\Repositories\Contracts\Modules\PerfilModeloInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ModeloController extends Controller
 {
 
-   public function index (PerfilModeloRepository $repository)
+   public function index (PerfilModeloInterface $repository)
    {
       $modelos = $repository->getModelos();
 

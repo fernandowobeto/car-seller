@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Repositories\Modules;
+namespace App\Repositories\Eloquent\Modules;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use App\Repositories\Contracts\Modules\PerfilModeloInterface;
 
-class PerfilModeloRepository
+class PerfilModeloRepository implements PerfilModeloInterface
 {
 
    public function getModelos(): Collection
