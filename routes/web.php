@@ -44,6 +44,15 @@ Route::middleware('auth')->group(function () {
             ->name('modelo.update')
             ->where('id', '[0-9]+');
 
+         Route::get('/cores', 'CorController@index')->name('cores');
+         Route::get('/cores/form/{id?}', 'CorController@form')
+            ->name('cor.form')
+            ->where('id', '[0-9]+');
+         Route::post('/cores/create', 'CorController@create')->name('cor.create');
+         Route::post('/cores/update/{id}', 'CorController@update')
+            ->name('cor.update')
+            ->where('id', '[0-9]+');
+
          Route::get('/combustiveis', 'CombustivelController@index')->name('combustiveis');
          Route::get('/combustiveis/form/{id?}', 'CombustivelController@form')
             ->name('combustivel.form')

@@ -17,6 +17,7 @@
                                     <li><a href="{{route('perfil.localizacoes')}}">Localizações</a></li>
                                     <li><a href="{{route('perfil.marcas')}}">Marcas</a></li>
                                     <li><a href="{{route('perfil.modelos')}}">Modelos</a></li>
+                                    <li><a href="{{route('perfil.cores')}}">Cores</a></li>
                                     <li><a href="{{route('perfil.combustiveis')}}">Combustíveis</a></li>
                                 @endif
                                 <li><a href="{{route('perfil.veiculo.add')}}">Adicionar Veículo</a></li>
