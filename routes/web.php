@@ -17,6 +17,15 @@ Route::middleware('auth')->group(function () {
       Route::get('/mensagens', 'PerfilController@mensagens')->name('mensagens');
 
       Route::middleware('auth.admin')->group(function () {
+         Route::get('/localizacoes', 'LocalizacaoController@index')->name('localizacoes');
+         Route::get('/localizacoes/form/{id?}', 'LocalizacaoController@form')
+            ->name('localizacao.form')
+            ->where('id', '[0-9]+');
+         Route::post('/localizacoes/create', 'LocalizacaoController@create')->name('localizacao.create');
+         Route::post('/localizacoes/update/{id}', 'LocalizacaoController@update')
+            ->name('localizacao.update')
+            ->where('id', '[0-9]+');
+
          Route::get('/marcas', 'MarcaController@index')->name('marcas');
          Route::get('/marcas/form/{id?}', 'MarcaController@form')
             ->name('marca.form')
