@@ -19,6 +19,7 @@
                                     <li><a href="{{route('perfil.modelos')}}">Modelos</a></li>
                                     <li><a href="{{route('perfil.cores')}}">Cores</a></li>
                                     <li><a href="{{route('perfil.combustiveis')}}">Combustíveis</a></li>
+                                    <li><a href="{{route('perfil.opcionais')}}">Opcionais</a></li>
                                 @endif
                                 <li><a href="{{route('perfil.veiculo.add')}}">Adicionar Veículo</a></li>
                                 <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>

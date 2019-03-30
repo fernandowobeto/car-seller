@@ -53,6 +53,15 @@ Route::middleware('auth')->group(function () {
             ->name('cor.update')
             ->where('id', '[0-9]+');
 
+         Route::get('/opcionais', 'OpcionalController@index')->name('opcionais');
+         Route::get('/opcionais/form/{id?}', 'OpcionalController@form')
+            ->name('opcional.form')
+            ->where('id', '[0-9]+');
+         Route::post('/opcionais/create', 'OpcionalController@create')->name('opcional.create');
+         Route::post('/opcionais/update/{id}', 'OpcionalController@update')
+            ->name('opcional.update')
+            ->where('id', '[0-9]+');
+
          Route::get('/combustiveis', 'CombustivelController@index')->name('combustiveis');
          Route::get('/combustiveis/form/{id?}', 'CombustivelController@form')
             ->name('combustivel.form')
