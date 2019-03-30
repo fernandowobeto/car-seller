@@ -7,7 +7,7 @@ Route::post('/login', 'LoginController@login_action')->name('login_action');
 Route::middleware('auth')->group(function () {
    Route::get('/logout', 'LoginController@logout')->name('logout');
 
-   Route::namespace('Perfil')->prefix('perfil')->name('perfil.')->group(function(){
+   Route::namespace('Perfil')->prefix('perfil')->name('perfil.')->group(function () {
       Route::get('/', 'PerfilController@index')->name('perfil');
       Route::post('update', 'PerfilController@update')->name('update');
 
@@ -51,6 +51,15 @@ Route::middleware('auth')->group(function () {
          Route::post('/cores/create', 'CorController@create')->name('cor.create');
          Route::post('/cores/update/{id}', 'CorController@update')
             ->name('cor.update')
+            ->where('id', '[0-9]+');
+
+         Route::get('/cambios', 'CambioController@index')->name('cambios');
+         Route::get('/cambios/form/{id?}', 'CambioController@form')
+            ->name('cambio.form')
+            ->where('id', '[0-9]+');
+         Route::post('/cambios/create', 'CambioController@create')->name('cambio.create');
+         Route::post('/cambios/update/{id}', 'CambioController@update')
+            ->name('cambio.update')
             ->where('id', '[0-9]+');
 
          Route::get('/opcionais', 'OpcionalController@index')->name('opcionais');
