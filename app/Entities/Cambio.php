@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cambios extends Model
+class Cambio extends Model
 {
 
    protected $table = 'cambios';

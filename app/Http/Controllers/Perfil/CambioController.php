@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Perfil;
 
-use App\Entities\Cambios;
+use App\Entities\Cambio;
 use App\Http\Requests\PerfilCambioSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class CambioController extends Controller
 
    public function index()
    {
-      $cambios = Cambios::all();
+      $cambios = Cambio::all();
 
       return view('perfil.cambios.index', compact('cambios'));
    }
@@ -23,7 +23,7 @@ class CambioController extends Controller
       $action = route('perfil.cambio.create');
 
       if ($id) {
-         $cambio = Cambios::find($id);
+         $cambio = Cambio::find($id);
          $action = route('perfil.cambio.update', ['id' => $id]);
       }
 
@@ -32,7 +32,7 @@ class CambioController extends Controller
 
    public function create(PerfilCambioSaveRequest $request)
    {
-      $cambio       = new Cambios();
+      $cambio       = new Cambio();
       $cambio->name = $request->get('name');
       $cambio->save();
 
