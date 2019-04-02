@@ -27,4 +27,12 @@ class PerfilOpcionalSaveRequest extends FormRequest
            'name' => 'required|unique:opcionais|max:100'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Informe a descrição'
+        ];
+    }
+
 }

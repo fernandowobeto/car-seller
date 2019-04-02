@@ -27,4 +27,11 @@ class PerfilCambioSaveRequest extends FormRequest
            'name' => 'required|unique:cambios|max:100'
         ];
     }
+
+   public function messages()
+   {
+      return [
+         'name.required' => 'Informe a descrição'
+      ];
+   }
 }

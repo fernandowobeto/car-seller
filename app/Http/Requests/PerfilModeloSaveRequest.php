@@ -28,4 +28,12 @@ class PerfilModeloSaveRequest extends FormRequest
            'marca_id' => 'required|integer'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Informe a descrição',
+            'marca_id.required' => 'Informe a marca'
+        ];
+    }
 }

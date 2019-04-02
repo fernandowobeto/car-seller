@@ -6,25 +6,32 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PerfilCombustivelSaveRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
+   /**
+    * Determine if the user is authorized to make this request.
+    *
+    * @return bool
+    */
+   public function authorize()
+   {
+      return true;
+   }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-           'name' => 'required|unique:combustiveis|max:80'
-        ];
-    }
+   /**
+    * Get the validation rules that apply to the request.
+    *
+    * @return array
+    */
+   public function rules()
+   {
+      return [
+         'name' => 'required|unique:combustiveis|max:80'
+      ];
+   }
+
+   public function messages()
+   {
+      return [
+         'name.required' => 'Informe a descrição'
+      ];
+   }
 }

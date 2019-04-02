@@ -24,7 +24,14 @@ class PerfilCorSaveRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required|unique:cores|max:100'
+            'name' => 'required|unique:cores|max:100'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Informe a descrição'
         ];
     }
 }

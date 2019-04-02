@@ -2,6 +2,7 @@
 @section('perfil_content')
     <h4>Marcas - Salvar</h4>
     <hr>
+    @include('form_errors')
     <form action="{{$action}}" method="POST">
         {{csrf_field()}}
         <div class="form-group">

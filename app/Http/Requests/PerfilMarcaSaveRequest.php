@@ -27,4 +27,11 @@ class PerfilMarcaSaveRequest extends FormRequest
            'name' => 'required|unique:marcas|max:40'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Informe a descrição'
+        ];
+    }
 }
