@@ -19,15 +19,15 @@ class CorController extends Controller
 
    public function form($id = null)
    {
-      $cor    = null;
+      $cor    = [];
       $action = route('perfil.cor.create');
 
       if ($id) {
-         $cor    = Cor::find($id);
+         $cor    = Cor::find($id)->getOriginal();
          $action = route('perfil.cor.update', ['id' => $id]);
       }
 
-      return view('perfil.cores.form', compact('cor', 'action'));
+      return view('perfil.cores.form', $cor)->with('action', $action);
    }
 
    public function create(PerfilCorSaveRequest $request)

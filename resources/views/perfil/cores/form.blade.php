@@ -10,7 +10,7 @@
             <input type="text" class="form-control"
                    id="name"
                    name="name"
-                   value="{{$cor->name ?? ''}}"
+                   value="{{old('name' , $name ?? '')}}"
                    maxlength="100">
         </div>
         <button type="submit" class="btn btn-default">Salvar</button>

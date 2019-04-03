@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PerfilCorSaveRequest extends FormRequest
 {
@@ -23,9 +24,20 @@ class PerfilCorSaveRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:cores|max:100'
+        $rules = [
+            'name' => [
+                'required',
+                'max:100'
+            ]
         ];
+
+        if($this->id){
+            $rules['name'][] = Rule::unique('cores')->ignore($this->id);
+        }else{
+            $rules['name'][] = 'unique:cores';
+        }
+
+        return $rules;
     }
 
     public function messages()
