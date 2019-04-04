@@ -9,4 +9,8 @@ class Cidade extends Model
 
     protected $table = 'cidades';
 
+    public function estado()
+    {
+        return $this->belongsTo('App\Entities\Estado');
+    }
 }

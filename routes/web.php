@@ -79,6 +79,11 @@ Route::middleware('auth')->group(function () {
          Route::post('/combustiveis/update/{id}', 'CombustivelController@update')
             ->name('combustivel.update')
             ->where('id', '[0-9]+');
+
+          Route::get('/cidades', 'CidadeController@index')->name('cidades');
+          Route::get('/cidades/form', 'CidadeController@form')
+              ->name('cidade.form');
+          Route::post('/cidades/create', 'CidadeController@create')->name('cidade.create');
       });
    });
 });
