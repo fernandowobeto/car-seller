@@ -19,6 +19,7 @@
                                         <li><a href="{{route('perfil.cores')}}">Cores</a></li>
                                         <li><a href="{{route('perfil.combustiveis')}}">Combustíveis</a></li>
                                         <li><a href="{{route('perfil.cambios')}}">Câmbios</a></li>
+                                        <li><a href="{{route('perfil.tipos')}}">Tipos</a></li>
                                         <li><a href="{{route('perfil.opcionais')}}">Opcionais</a></li>
                                         <li><a href="{{route('perfil.adicionais')}}">Adicionais</a></li>
                                         <li><a href="{{route('perfil.cidades')}}">Cidades</a></li>
