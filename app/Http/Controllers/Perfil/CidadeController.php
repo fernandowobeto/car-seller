@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Cidade;
 use App\Entities\Estado;
+use App\Http\Filters\Perfil\CidadesFilter;
 use App\Http\Requests\PerfilCidadeSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,9 +12,11 @@ use App\Http\Controllers\Controller;
 class CidadeController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $cidades = Cidade::paginate(15);
+        $filter = new CidadesFilter($request);
+
+        $cidades = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
         return view('perfil.cidades.index', compact('cidades'));
     }

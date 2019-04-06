@@ -5,11 +5,20 @@
     <div class="row margin-btm-20">
         <div class="col-md-6">
             <form action="{{route('perfil.cidades')}}" method="GET">
-                <input type="text" name="name" class="form-control">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="name" placeholder="Buscar por nome...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i> Buscar
+                        </button>
+                      </span>
+                </div>
             </form>
         </div>
         <div class="col-md-6">
-            <a class="btn pull-right" href="{{route('perfil.cidade.form')}}">Adicionar</a>
+            <a class="btn pull-right" href="{{route('perfil.cidade.form')}}">
+                <i class="fa fa-plus"></i>  Adicionar
+            </a>
         </div>
     </div>
     <div class="row">
