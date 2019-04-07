@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Marca;
+use App\Http\Filters\Perfil\MarcasFilter;
 use App\Http\Requests\PerfilMarcaSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,42 +11,44 @@ use App\Http\Controllers\Controller;
 class MarcaController extends Controller
 {
 
-   public function index ()
-   {
-      $marcas = Marca::all();
+    public function index(Request $request)
+    {
+        $filter = new MarcasFilter($request);
 
-      return view('perfil.marcas.index', compact('marcas'));
-   }
+        $marcas = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
-   public function form ($id = null)
-   {
-      $marca = null;
-      $action = route('perfil.marca.create');
+        return view('perfil.marcas.index', compact('marcas'));
+    }
 
-      if($id){
-         $marca = Marca::find($id);
-         $action = route('perfil.marca.update', ['id' => $id]);
-      }
+    public function form($id = null)
+    {
+        $marca  = null;
+        $action = route('perfil.marca.create');
 
-      return view('perfil.marcas.form', compact('marca', 'action'));
-   }
+        if ($id) {
+            $marca  = Marca::find($id);
+            $action = route('perfil.marca.update', ['id' => $id]);
+        }
 
-   public function create (PerfilMarcaSaveRequest $request)
-   {
-      $marca = new Marca();
-      $marca->name = $request->get('name');
-      $marca->save();
+        return view('perfil.marcas.form', compact('marca', 'action'));
+    }
 
-      return redirect()->route('perfil.marcas');
-   }
+    public function create(PerfilMarcaSaveRequest $request)
+    {
+        $marca       = new Marca();
+        $marca->name = $request->get('name');
+        $marca->save();
 
-   public function update ($id, PerfilMarcaSaveRequest $request)
-   {
-      $marca = Marca::find($id);
-      $marca->name = $request->get('name');
-      $marca->save();
+        return redirect()->route('perfil.marcas');
+    }
 
-      return redirect()->route('perfil.marcas');
-   }
+    public function update($id, PerfilMarcaSaveRequest $request)
+    {
+        $marca       = Marca::find($id);
+        $marca->name = $request->get('name');
+        $marca->save();
+
+        return redirect()->route('perfil.marcas');
+    }
 
 }

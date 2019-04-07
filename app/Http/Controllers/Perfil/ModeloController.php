@@ -14,7 +14,7 @@ class ModeloController extends Controller
 
    public function index (PerfilModeloInterface $repository)
    {
-      $modelos = $repository->getModelos();
+      $modelos = $repository->getModelos('name');
 
       return view('perfil.modelos.index', compact('modelos'));
    }
@@ -29,7 +29,7 @@ class ModeloController extends Controller
          $action =route('perfil.modelo.update', ['id' => $id]);
       }
 
-      $marcas = Marca::all();
+      $marcas = Marca::all()->sortBy('name');
 
       return view('perfil.modelos.form', compact('modelo', 'marcas', 'action'));
    }
