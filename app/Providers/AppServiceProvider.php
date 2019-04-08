@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\Modules\PerfilModeloInterface;
-use App\Repositories\Eloquent\Modules\PerfilModeloRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
     */
    public function register()
    {
-      $this->app->bind(PerfilModeloInterface::class, PerfilModeloRepository::class);
+//      $this->app->bind(PerfilModeloInterface::class, PerfilModeloRepository::class);
    }
 
    /**

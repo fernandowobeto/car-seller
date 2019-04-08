@@ -4,54 +4,56 @@ namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Marca;
 use App\Entities\Modelo;
+use App\Http\Filters\Perfil\ModelosFilter;
 use App\Http\Requests\PerfilModeloSaveRequest;
-use App\Repositories\Contracts\Modules\PerfilModeloInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ModeloController extends Controller
 {
 
-   public function index (PerfilModeloInterface $repository)
-   {
-      $modelos = $repository->getModelos('name');
+    public function index(Request $request)
+    {
+        $filter = new ModelosFilter($request);
 
-      return view('perfil.modelos.index', compact('modelos'));
-   }
+        $modelos = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
-   public function form ($id = null)
-   {
-      $modelo = null;
-      $action = route('perfil.modelo.create');
+        return view('perfil.modelos.index', compact('modelos'));
+    }
 
-      if($id){
-         $modelo = Modelo::find($id);
-         $action =route('perfil.modelo.update', ['id' => $id]);
-      }
+    public function form($id = null)
+    {
+        $modelo = null;
+        $action = route('perfil.modelo.create');
 
-      $marcas = Marca::all()->sortBy('name');
+        if ($id) {
+            $modelo = Modelo::find($id);
+            $action = route('perfil.modelo.update', ['id' => $id]);
+        }
 
-      return view('perfil.modelos.form', compact('modelo', 'marcas', 'action'));
-   }
+        $marcas = Marca::all()->sortBy('name');
 
-   public function create (PerfilModeloSaveRequest $request)
-   {
-      $modelo = new Modelo();
-      $modelo->name = $request->get('name');
-      $modelo->marca_id = $request->get('marca_id');
-      $modelo->save();
+        return view('perfil.modelos.form', compact('modelo', 'marcas', 'action'));
+    }
 
-      return redirect()->route('perfil.modelos');
-   }
+    public function create(PerfilModeloSaveRequest $request)
+    {
+        $modelo           = new Modelo();
+        $modelo->name     = $request->get('name');
+        $modelo->marca_id = $request->get('marca_id');
+        $modelo->save();
 
-   public function update ($id, PerfilModeloSaveRequest $request)
-   {
-      $modelo = Modelo::find($id);
-      $modelo->name = $request->get('name');
-      $modelo->marca_id = $request->get('marca_id');
-      $modelo->save();
+        return redirect()->route('perfil.modelos');
+    }
 
-      return redirect()->route('perfil.modelos');
-   }
+    public function update($id, PerfilModeloSaveRequest $request)
+    {
+        $modelo           = Modelo::find($id);
+        $modelo->name     = $request->get('name');
+        $modelo->marca_id = $request->get('marca_id');
+        $modelo->save();
+
+        return redirect()->route('perfil.modelos');
+    }
 
 }
