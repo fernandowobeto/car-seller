@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Opcional;
+use App\Http\Filters\Perfil\OpcionaisFilter;
 use App\Http\Requests\PerfilOpcionalSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,42 +11,44 @@ use App\Http\Controllers\Controller;
 class OpcionalController extends Controller
 {
 
-   public function index()
-   {
-      $opcionais = Opcional::all();
+    public function index(Request $request)
+    {
+        $filter = new OpcionaisFilter($request);
 
-      return view('perfil.opcionais.index', compact('opcionais'));
-   }
+        $opcionais = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
-   public function form($id = null)
-   {
-      $opcional = null;
-      $action   = route('perfil.opcional.create');
+        return view('perfil.opcionais.index', compact('opcionais'));
+    }
 
-      if ($id) {
-         $opcional = Opcional::find($id);
-         $action   = route('perfil.opcional.update', ['id' => $id]);
-      }
+    public function form($id = null)
+    {
+        $opcional = null;
+        $action   = route('perfil.opcional.create');
 
-      return view('perfil.opcionais.form', compact('opcional', 'action'));
-   }
+        if ($id) {
+            $opcional = Opcional::find($id);
+            $action   = route('perfil.opcional.update', ['id' => $id]);
+        }
 
-   public function create(PerfilOpcionalSaveRequest $request)
-   {
-      $opcional       = new Opcional();
-      $opcional->name = $request->get('name');
-      $opcional->save();
+        return view('perfil.opcionais.form', compact('opcional', 'action'));
+    }
 
-      return redirect()->route('perfil.opcionais');
-   }
+    public function create(PerfilOpcionalSaveRequest $request)
+    {
+        $opcional       = new Opcional();
+        $opcional->name = $request->get('name');
+        $opcional->save();
 
-   public function update($id, PerfilOpcionalSaveRequest $request)
-   {
-      $opcional       = Opcional::find($id);
-      $opcional->name = $request->get('name');
-      $opcional->save();
+        return redirect()->route('perfil.opcionais');
+    }
 
-      return redirect()->route('perfil.opcionais');
-   }
+    public function update($id, PerfilOpcionalSaveRequest $request)
+    {
+        $opcional       = Opcional::find($id);
+        $opcional->name = $request->get('name');
+        $opcional->save();
+
+        return redirect()->route('perfil.opcionais');
+    }
 
 }
