@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Cor;
+use App\Http\Filters\Perfil\CoresFilter;
 use App\Http\Requests\PerfilCorSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,42 +11,44 @@ use App\Http\Controllers\Controller;
 class CorController extends Controller
 {
 
-   public function index()
-   {
-      $cores = Cor::all();
+    public function index(Request $request)
+    {
+        $filter = new CoresFilter($request);
 
-      return view('perfil.cores.index', compact('cores'));
-   }
+        $cores = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
-   public function form($id = null)
-   {
-      $cor    = [];
-      $action = route('perfil.cor.create');
+        return view('perfil.cores.index', compact('cores'));
+    }
 
-      if ($id) {
-         $cor    = Cor::find($id)->getOriginal();
-         $action = route('perfil.cor.update', ['id' => $id]);
-      }
+    public function form($id = null)
+    {
+        $cor    = [];
+        $action = route('perfil.cor.create');
 
-      return view('perfil.cores.form', $cor)->with('action', $action);
-   }
+        if ($id) {
+            $cor    = Cor::find($id)->getOriginal();
+            $action = route('perfil.cor.update', ['id' => $id]);
+        }
 
-   public function create(PerfilCorSaveRequest $request)
-   {
-      $cor       = new Cor();
-      $cor->name = $request->get('name');
-      $cor->save();
+        return view('perfil.cores.form', $cor)->with('action', $action);
+    }
 
-      return redirect()->route('perfil.cores');
-   }
+    public function create(PerfilCorSaveRequest $request)
+    {
+        $cor       = new Cor();
+        $cor->name = $request->get('name');
+        $cor->save();
 
-   public function update($id, PerfilCorSaveRequest $request)
-   {
-      $cor       = Cor::find($id);
-      $cor->name = $request->get('name');
-      $cor->save();
+        return redirect()->route('perfil.cores');
+    }
 
-      return redirect()->route('perfil.cores');
-   }
+    public function update($id, PerfilCorSaveRequest $request)
+    {
+        $cor       = Cor::find($id);
+        $cor->name = $request->get('name');
+        $cor->save();
+
+        return redirect()->route('perfil.cores');
+    }
 
 }
