@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Adicional;
+use App\Http\Filters\Perfil\AdicionaisFilter;
 use App\Http\Requests\PerfilAdicionalSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,9 +11,11 @@ use App\Http\Controllers\Controller;
 class AdicionalController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $adicionais = Adicional::all();
+        $filter = new AdicionaisFilter($request);
+
+        $adicionais = $filter->apply()->paginate(15)->appends($request->only(['name']));
 
         return view('perfil.adicionais.index', compact('adicionais'));
     }

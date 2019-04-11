@@ -47,7 +47,7 @@
             </tbody>
         </table>
     </div>
-    <div class="row margin-btm-20">
+    <div class="row">
         <div class="col-md-12">
             {{ $modelos->links() }}
         </div>
