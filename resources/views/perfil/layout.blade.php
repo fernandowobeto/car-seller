@@ -24,7 +24,7 @@
                                         <li><a href="{{route('perfil.adicionais')}}">Adicionais</a></li>
                                         <li><a href="{{route('perfil.cidades')}}">Cidades</a></li>
                                     @endif
-                                    <li><a href="{{route('perfil.veiculo.add')}}">Adicionar Veículo</a></li>
+                                    <li><a href="{{route('perfil.veiculo.form')}}">Adicionar Veículo</a></li>
                                     <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>
                                     <li><a href="{{route('perfil.mensagens')}}">Mensagens</a></li>
                                 </ul>

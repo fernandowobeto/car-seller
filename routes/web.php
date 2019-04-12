@@ -11,10 +11,10 @@ Route::middleware('auth')->group(function () {
       Route::get('/', 'PerfilController@index')->name('perfil');
       Route::post('update', 'PerfilController@update')->name('update');
 
-      Route::get('/veiculo/add', 'PerfilController@veiculo_add')->name('veiculo.add');
-      Route::post('/veiculo/add', 'PerfilController@veiculo_add')->name('veiculo.save');
-      Route::get('/veiculos', 'PerfilController@veiculos')->name('veiculos');
-      Route::get('/mensagens', 'PerfilController@mensagens')->name('mensagens');
+       Route::get('/veiculos', 'VeiculoController@index')->name('veiculos');
+      Route::get('/veiculo/form', 'VeiculoController@form')->name('veiculo.form');
+      Route::post('/veiculo/add', 'VeiculoController@veiculo_add')->name('veiculo.save');
+      Route::get('/mensagens', 'VeiculoController@mensagens')->name('mensagens');
 
       Route::middleware('auth.admin')->group(function () {
          Route::get('/marcas', 'MarcaController@index')->name('marcas');
