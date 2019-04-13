@@ -257,5 +257,6 @@
 <script src="{{asset('assets/js/slick.min.js')}}"></script>
 <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
 
+@yield('scripts')
 </body>
 </html>

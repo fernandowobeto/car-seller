@@ -10,7 +10,7 @@ use App\Entities\Combustivel;
 use App\Entities\Tipo;
 use App\Entities\Opcional;
 use App\Entities\Adicional;
-use App\Http\Requests\PerfilCambioSaveRequest;
+use App\Http\Requests\PerfilVeiculoSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,6 +33,8 @@ class VeiculoController extends Controller
         $adicionais   = Adicional::all();
         $anos         = range((date('Y') + 1), 1900);
         $portas       = range(1, 5);
+        $opcionais    = Opcional::all();
+        $adicionais   = Adicional::all();
 
         return view('perfil.veiculos.form', compact(
             'marcas',
@@ -43,13 +45,26 @@ class VeiculoController extends Controller
             'opcionais',
             'adicionais',
             'anos',
-            'portas'
+            'portas',
+            'opcionais',
+            'adicionais'
         ));
     }
 
-    public function getModelos()
+    public function getModelos($id)
     {
+        $modelos = Modelo::where([
+            'marca_id' => $id
+        ])->get();
 
+        return implode('', array_map(function ($modelo) {
+            return sprintf('<option value="%d">%s</option>', $modelo['id'], $modelo['name']);
+        }, $modelos->toArray()));
+    }
+
+    public function create(PerfilVeiculoSaveRequest $request)
+    {
+        dd($request->all());
     }
 
 }

@@ -3,7 +3,7 @@
     <h4>Adicionando veículo</h4>
     <hr>
     @include('form_errors')
-    <form action="" method="POST">
+    <form action="{{route('perfil.veiculo.create')}}" method="POST" id="form_veiculo">
         {{csrf_field()}}
         <div class="panel panel-default">
             <div class="panel-heading">Dados Principais</div>
@@ -108,15 +108,54 @@
         <div class="panel panel-default">
             <div class="panel-heading">Características</div>
             <div class="panel-body">
-
+                <div class="row">
+                    @foreach($opcionais as $opcional)
+                        <div class="col-md-6">
+                            <div class="alert alert-info" role="alert">
+                                <input type="checkbox" name="opcional[]" value="{{$opcional->id}}">
+                                {{$opcional->name}}
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">Adicionais</div>
             <div class="panel-body">
-
+                <div class="row">
+                    @foreach($adicionais as $adicional)
+                        <div class="col-md-6">
+                            <div class="alert alert-info" role="alert">
+                                <input type="checkbox" name="adicional[]" value="{{$adicional->id}}">
+                                {{$adicional->name}}
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-default">Salvar</button>
     </form>
+@endsection
+@section('scripts')
+    <script>
+        (function ($) {
+            var FormVeiculo = $('#form_veiculo');
+            var Marca = FormVeiculo.find('#marca_id');
+            var Modelo = FormVeiculo.find('#modelo_id');
+
+            Marca.change(function () {
+                if (!$(this).val()) {
+                    Modelo.find('option:not(:first)').remove();
+
+                    return false;
+                }
+
+                $.get('/perfil/veiculo/modelos/' + $(this).val(), function (options) {
+                    Modelo.append(options);
+                });
+            });
+        })(jQuery)
+    </script>
 @endsection
