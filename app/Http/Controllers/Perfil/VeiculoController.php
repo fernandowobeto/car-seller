@@ -10,9 +10,14 @@ use App\Entities\Combustivel;
 use App\Entities\Tipo;
 use App\Entities\Opcional;
 use App\Entities\Adicional;
+use App\Entities\Veiculo;
+use App\Entities\VeiculoOpcional;
+use App\Entities\VeiculoAdicional;
 use App\Http\Requests\PerfilVeiculoSaveRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VeiculoController extends Controller
 {
@@ -64,7 +69,38 @@ class VeiculoController extends Controller
 
     public function create(PerfilVeiculoSaveRequest $request)
     {
-        dd($request->all());
+        DB::beginTransaction();
+
+        $data = $request->all();
+
+        $data['valor']   = 38450.50;
+        $data['user_id'] = Auth::user()->id;
+
+        $veiculo = new Veiculo($data);
+
+        $veiculo->save();
+
+        if ($request->has('opcional')) {
+            foreach ($request->opcional as $op) {
+                $opcional              = new VeiculoOpcional();
+                $opcional->veiculo_id  = $veiculo->id;
+                $opcional->opcional_id = $op;
+                $opcional->save();
+            }
+        }
+
+        if ($request->has('adicional')) {
+            foreach ($request->adicional as $ad) {
+                $adicional               = new VeiculoAdicional();
+                $adicional->veiculo_id   = $veiculo->id;
+                $adicional->adicional_id = $ad;
+                $adicional->save();
+            }
+        }
+
+        DB::commit();
+
+        return redirect()->route('perfil.veiculos');
     }
 
 }

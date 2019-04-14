@@ -15,7 +15,7 @@ class MoneyBr implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^\s*(?:[1-9]\d{0,2}(?:\.\d{3})*|0)(?:,\d{1,2})?$/', $value) > 0;
+        return preg_match('/^\s*(?:[1-9]\d{0,2}(?:\.\d{3})*|0)(?:,\d{1,2})?$/', $value);
     }
 
     /**
@@ -25,6 +25,6 @@ class MoneyBr implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'O valor informado é um valor inválido para o tipo moeda.';
     }
 }

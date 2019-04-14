@@ -103,6 +103,10 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="name">Descrição</label>
+                    <textarea name="descricao" id="descricao" rows="8" class="form-control"></textarea>
+                </div>
             </div>
         </div>
         <div class="panel panel-default">

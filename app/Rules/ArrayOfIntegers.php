@@ -35,6 +35,6 @@ class ArrayOfIntegers implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'Problema com o array de valores inteiros.';
     }
 }

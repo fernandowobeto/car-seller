@@ -33,7 +33,7 @@ class CreateVeiculosTable extends Migration
             $table->integer('quantidade_portas');
             $table->integer('kilometragem');
             $table->float('valor', 12, 2);
-            $table->text('descricao');
+            $table->text('descricao')->nullable();
             $table->boolean('pago')->default(false);
             $table->timestamps();
         });

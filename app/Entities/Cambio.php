@@ -9,4 +9,6 @@ class Cambio extends Model
 
    protected $table = 'cambios';
 
+   protected $fillable = ['name'];
+
 }
