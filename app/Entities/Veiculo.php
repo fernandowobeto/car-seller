@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use FernandoWobeto\ModelFillableControl\Model;
 
-class Veiculo extends Modelw
+class Veiculo extends Model
 {
 
     protected $table = 'veiculos';

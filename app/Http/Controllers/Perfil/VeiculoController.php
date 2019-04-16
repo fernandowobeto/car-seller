@@ -18,13 +18,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Filters\Perfil\VeiculosFilter;
 
 class VeiculoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('perfil.veiculos.index');
+        $filter = new VeiculosFilter($request);
+
+        $veiculos = $filter->apply();
+
+        return view('perfil.veiculos.index', compact('veiculos'));
     }
 
     public function form()
