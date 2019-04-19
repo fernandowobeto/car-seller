@@ -27,6 +27,7 @@ class PerfilVeiculoRepository implements PerfilVeiculoInterface
             ->orderBy('v.id');
 
         $resource->where('v.user_id', $user_id);
+        $resource->where('v.finalizado', false);
 
         $filters($resource);
 

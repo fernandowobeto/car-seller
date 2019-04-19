@@ -24,7 +24,13 @@ class Veiculo extends Model
         'valor',
         'descricao',
         'data_aprovado',
-        'free'
+        'free',
+        'finalizado'
     ];
+
+    public function isThisUser(User $user)
+    {
+        return $this->user_id == $user->id;
+    }
 
 }

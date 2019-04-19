@@ -17,12 +17,12 @@
         </div>
         <div class="col-md-6">
             <a class="btn pull-right" href="{{route('perfil.veiculo.form')}}">
-                <i class="fa fa-plus"></i>  Adicionar
+                <i class="fa fa-plus"></i> Adicionar
             </a>
         </div>
     </div>
     <div class="row">
-        <table class="table table-striped">
+        <table id="table_veiculos" class="table table-striped">
             <thead>
             <tr>
                 <th class="text-right" width="70">Código</th>
@@ -31,7 +31,7 @@
                 <th>Modelo</th>
                 <th>Cor</th>
                 <th class="text-center" width="100">Expira</th>
-                <th class="text-center" width="170">#</th>
+                <th class="text-center" width="150">#</th>
             </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
                     <td class="text-center">
                         <div class="btn-group btn-group-sm" role="group">
                             <button type="button" class="btn btn-default">Renovar</button>
-                            <button type="button" class="btn btn-default">Finalizar</button>
+                            <a href="{{route('perfil.veiculo.finalizar', ['id' => $veiculo->id])}}" class="btn btn-default link-finalizar">Finalizar</a>
                         </div>
                     </td>
                 </tr>
@@ -54,4 +54,19 @@
             </tbody>
         </table>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        (function ($) {
+            var TableVeiculos = $('#table_veiculos');
+
+            TableVeiculos.find('a.link-finalizar').click(function () {
+                if (confirm('Deseja mesmo finalizar o anúncio desse veículo?')) {
+                    return true;
+                }
+
+                return false;
+            });
+        })(jQuery)
+    </script>
 @endsection

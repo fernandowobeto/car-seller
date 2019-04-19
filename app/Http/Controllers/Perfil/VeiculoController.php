@@ -109,4 +109,14 @@ class VeiculoController extends Controller
         return redirect()->route('perfil.veiculos');
     }
 
+    public function finalizar($id)
+    {
+        $veiculo = Veiculo::find($id);
+
+        $veiculo->finalizado = true;
+        $save = $veiculo->save();
+
+        return redirect()->route('perfil.veiculos');
+    }
+
 }

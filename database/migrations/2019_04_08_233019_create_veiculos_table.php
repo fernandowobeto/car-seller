@@ -36,6 +36,7 @@ class CreateVeiculosTable extends Migration
             $table->text('descricao')->nullable();
             $table->date('data_aprovado')->useCurrent();
             $table->boolean('free')->default(true);
+            $table->boolean('finalizado')->default(false);
             $table->timestamps();
         });
     }

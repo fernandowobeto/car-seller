@@ -16,6 +16,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/veiculo/modelos/{id}', 'VeiculoController@getModelos')
             ->where('id', '[0-9]+');
         Route::post('/veiculo/create', 'VeiculoController@create')->name('veiculo.create');
+        Route::middleware('auth.veiculo.finalizar')->get('/veiculo/finalizar/{id}', 'VeiculoController@finalizar')
+            ->where('id', '[0-9]+')->name('veiculo.finalizar');
         Route::get('/mensagens', 'VeiculoController@mensagens')->name('mensagens');
 
         Route::middleware('auth.admin')->group(function () {
