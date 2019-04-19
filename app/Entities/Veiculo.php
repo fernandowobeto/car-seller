@@ -23,7 +23,8 @@ class Veiculo extends Model
         'kilometragem',
         'valor',
         'descricao',
-        'pago'
+        'data_aprovado',
+        'free'
     ];
 
 }

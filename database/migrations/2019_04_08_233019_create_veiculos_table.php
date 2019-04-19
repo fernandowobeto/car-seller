@@ -34,7 +34,8 @@ class CreateVeiculosTable extends Migration
             $table->integer('kilometragem');
             $table->float('valor', 12, 2);
             $table->text('descricao')->nullable();
-            $table->boolean('pago')->default(false);
+            $table->date('data_aprovado')->useCurrent();
+            $table->boolean('free')->default(true);
             $table->timestamps();
         });
     }

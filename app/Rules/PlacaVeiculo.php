@@ -15,7 +15,7 @@ class PlacaVeiculo implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^[A-Z]{3}[0-9]{1}[0-9A-Z]{1}[0-9]{2}$/', $value) > 0;
+        return is_valid_placa_veiculo($value);
     }
 
     /**

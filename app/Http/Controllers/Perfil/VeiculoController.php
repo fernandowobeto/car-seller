@@ -78,8 +78,9 @@ class VeiculoController extends Controller
 
         $data = $request->all();
 
-        $data['valor']   = 38450.50;
-        $data['user_id'] = Auth::user()->id;
+        $data['valor']         = money_to_us($data['valor']);
+        $data['user_id']       = Auth::user()->id;
+        $data['data_aprovado'] = date('Y-m-d');
 
         $veiculo = new Veiculo($data);
 

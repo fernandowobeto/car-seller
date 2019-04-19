@@ -19,10 +19,14 @@ class PerfilVeiculoRepository implements PerfilVeiculoInterface
                 'm.name AS marca_name',
                 'c.name AS cor_name'
             )
+            ->selectRaw("(v.data_aprovado + integer '30') as expires")
+            ->selectRaw("((v.data_aprovado + integer '30') < ?) as expired", [date('Y-m-d')])
             ->join('modelos as mo', 'mo.id', '=', 'v.modelo_id')
             ->join('marcas as m', 'm.id', '=', 'mo.marca_id')
             ->join('cores as c', 'c.id', '=', 'v.cor_id')
             ->orderBy('v.id');
+
+        $resource->where('v.user_id', $user_id);
 
         $filters($resource);
 
