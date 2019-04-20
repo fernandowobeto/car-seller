@@ -1,6 +1,8 @@
 <?php
 
 Route::get('/', 'IndexController@home')->name('home');
+Route::get('/modelos/{id}', 'IndexController@getModelos')
+    ->where('id', '[0-9]+');
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@login_action')->name('login_action');
 
