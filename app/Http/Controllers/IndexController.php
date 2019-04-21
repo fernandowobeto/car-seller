@@ -37,4 +37,9 @@ class IndexController extends Controller
         }, $modelos->toArray()));
     }
 
+    public function veiculos()
+    {
+        return view('veiculos');
+    }
+
 }
