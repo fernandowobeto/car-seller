@@ -18,7 +18,7 @@
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
                             <select class="form-control" id="marca" name="marca">
-                                <option>Selecione a Marca</option>
+                                <option value="">Selecione a Marca</option>
                                 <?php foreach($marcas as $marca): ?>
                                 <option value="<?php echo $marca->name;?>"
                                         data-id="<?php echo $marca->id;?>">
@@ -31,14 +31,14 @@
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
                             <select class="form-control" id="modelo" name="modelo">
-                                <option>Selecione o Modelo</option>
+                                <option value="">Selecione o Modelo</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
                             <select class="form-control">
-                                <option>Selecione o Ano</option>
+                                <option value="">Selecione o Ano</option>
                                 <?php foreach($anos as $ano): ?>
                                 <option value="<?php echo $ano;?>"><?php echo $ano;?></option>
                                 <?php endforeach; ?>
@@ -54,7 +54,7 @@
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
                             <select class="form-control">
-                                <option>Tipo de Carro</option>
+                                <option value="">Tipo de Carro</option>
                                 <?php foreach($tipos as $tipo): ?>
                                 <option value="<?php echo $tipo->name;?>"><?php echo $tipo->name;?></option>
                                 <?php endforeach; ?>

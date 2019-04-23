@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach(range(1,12) AS $range)
+                        @foreach($veiculos AS $veiculo)
                             <div class="col-md-4 grid_listing">
                                 <div class="product-listing-m gray-bg">
                                     <div class="product-listing-img"><a href="#"><img src="assets/images/featured-img-1.jpg" class="img-responsive" alt="image"/> </a>

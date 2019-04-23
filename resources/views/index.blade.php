@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-@yield('content_home')
+    @yield('content_home')
 
     <!--Brands-->
     <section class="brand-section gray-bg">

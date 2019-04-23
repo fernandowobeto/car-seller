@@ -4,13 +4,12 @@ namespace App\Repositories\Eloquent\Modules;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
-use App\Repositories\Contracts\Modules\PerfilVeiculoInterface;
 use PhpParser\Builder;
 
-class PerfilVeiculoRepository implements PerfilVeiculoInterface
+class VeiculoRepository
 {
 
-    public function getVeiculos(int $user_id, callable $filters): Collection
+    public function getVeiculos(callable $filters): Collection
     {
         $resource = DB::table('veiculos as v')
             ->select(
@@ -26,7 +25,6 @@ class PerfilVeiculoRepository implements PerfilVeiculoInterface
             ->join('cores as c', 'c.id', '=', 'v.cor_id')
             ->orderBy('v.id');
 
-        $resource->where('v.user_id', $user_id);
         $resource->where('v.finalizado', false);
 
         $filters($resource);

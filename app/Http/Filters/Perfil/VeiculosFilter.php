@@ -3,7 +3,7 @@
 namespace App\Http\Filters\Perfil;
 
 use App\Http\Filters\FiltersAbstract;
-use App\Repositories\Eloquent\Modules\PerfilVeiculoRepository;
+use App\Repositories\Eloquent\Modules\Perfil\VeiculoRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +31,7 @@ class VeiculosFilter extends FiltersAbstract
 
     protected function boot()
     {
-        $this->veiculoRepository = new PerfilVeiculoRepository();
+        $this->veiculoRepository = new VeiculoRepository();
     }
 
 }
