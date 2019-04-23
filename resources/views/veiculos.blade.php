@@ -25,7 +25,7 @@
                 <div class="col-md-9 col-md-push-3">
                     <div class="result-sorting-wrapper">
                         <div class="sorting-count">
-                            <p>1 - 12 <span>of 50 Results for your search.</span></p>
+                            <p>{{count($veiculos)}} <span>veículos sendo mostrados.</span></p>
                         </div>
                         <div class="result-sorting-by">
                             <p>Ordenar por:</p>
@@ -44,24 +44,26 @@
                         @foreach($veiculos AS $veiculo)
                             <div class="col-md-4 grid_listing">
                                 <div class="product-listing-m gray-bg">
-                                    <div class="product-listing-img"><a href="#"><img src="assets/images/featured-img-1.jpg" class="img-responsive" alt="image"/> </a>
-                                        <div class="label_icon">New</div>
+                                    <div class="product-listing-img"><a href="#"><img src="assets/images/car_no_images.jpg" class="img-responsive" alt="image"/> </a>
+                                        <div class="label_icon">{{$veiculo->tipo_name}}</div>
                                         <div class="compare_item">
                                             <div class="checkbox">
                                                 <input type="checkbox" value="" id="compare10">
-                                                <label for="compare10">Compare</label>
+                                                <label for="compare10">Comparar</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="product-listing-content">
-                                        <h5><a href="#">Mazda CX-5 SX, V6, ABS, Sunroof </a></h5>
-                                        <p class="list-price">$89,000</p>
-                                        <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span></div>
+                                        <h5><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}} </a></h5>
+                                        <p class="list-price">R$ {{formata_moeda($veiculo->valor)}}</p>
+                                        <div class="car-location">
+                                            <span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span>
+                                        </div>
                                         <ul class="features_list">
-                                            <li><i class="fa fa-road" aria-hidden="true"></i>35,000 km</li>
-                                            <li><i class="fa fa-tachometer" aria-hidden="true"></i>30.000 miles</li>
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>2005 model</li>
-                                            <li><i class="fa fa-car" aria-hidden="true"></i>Diesel</li>
+                                            <li><i class="fa fa-road" aria-hidden="true"></i>{{formata_kilometragem($veiculo->kilometragem)}} km</li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i>Ano {{$veiculo->ano_fabricacao}}</li>
+                                            <li><i class="fa fa-car" aria-hidden="true"></i>{{$veiculo->combustivel_name}}</li>
+                                            <li><i class="fa fa-paint-brush" aria-hidden="true"></i>{{$veiculo->cor_name}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -89,52 +91,22 @@
                             <form action="#" method="get">
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Localização</option>
-                                        <option>Audi</option>
-                                        <option>BMW</option>
-                                        <option>Nissan</option>
-                                        <option>Toyota</option>
-                                        <option>Volvo</option>
-                                        <option>Mazda</option>
-                                        <option>Mercedes-Benz</option>
-                                        <option>Lotus</option>
+                                        <option value="">Localização</option>
                                     </select>
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Marca</option>
-                                        <option>Audi</option>
-                                        <option>BMW</option>
-                                        <option>Nissan</option>
-                                        <option>Toyota</option>
-                                        <option>Volvo</option>
-                                        <option>Mazda</option>
-                                        <option>Mercedes-Benz</option>
-                                        <option>Lotus</option>
+                                        <option value="">Marca</option>
                                     </select>
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Modelo</option>
-                                        <option>Series 1</option>
-                                        <option>Series 2</option>
-                                        <option>Series 3</option>
-                                        <option>Series 4</option>
-                                        <option>Series 6</option>
+                                        <option value="">Modelo</option>
                                     </select>
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Ano Modelo</option>
-                                        <option>2016</option>
-                                        <option>2015</option>
-                                        <option>2014</option>
-                                        <option>2013</option>
-                                        <option>2012</option>
-                                        <option>2011</option>
-                                        <option>2010</option>
-                                        <option>2009</option>
-                                        <option>2008</option>
+                                        <option value="">Ano Modelo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -143,9 +115,7 @@
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Tipo</option>
-                                        <option>New Car</option>
-                                        <option>Used Car</option>
+                                        <option value="">Tipo</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

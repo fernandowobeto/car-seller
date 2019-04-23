@@ -20,3 +20,13 @@ function date_to_br($date)
 {
     return implode('/', array_reverse(explode('-', $date)));
 }
+
+function formata_moeda($moeda)
+{
+    return number_format($moeda, 2, ',', '.');
+}
+
+function formata_kilometragem($km)
+{
+    return number_format($km, 0, '', '.');
+}
