@@ -21,24 +21,3 @@
     </section>
     <!-- /Brands-->
 @endsection
-@section('scripts')
-    <script>
-        (function ($) {
-            var FormFilter = $('#form_filter');
-            var Marca = FormFilter.find('#marca');
-            var Modelo = FormFilter.find('#modelo');
-
-            Marca.change(function () {
-                if (!$(this).val()) {
-                    Modelo.find('option:not(:first)').remove();
-
-                    return false;
-                }
-
-                $.get('/modelos/' + $(this).find('option:selected').data('id'), function (options) {
-                    Modelo.append(options);
-                });
-            });
-        })(jQuery)
-    </script>
-@endsection

@@ -4,7 +4,7 @@
         <div class="main_bg white-text">
             <h3>Encontre seu carro</h3>
             <div class="row">
-                <form id="form_filter" action="/veiculos" method="get">
+                <form id="form_filter" action="{{route('veiculos')}}" method="get">
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
                             <select class="form-control" name="uf">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
-                            <select class="form-control">
+                            <select class="form-control" name="ano">
                                 <option value="">Selecione o Ano</option>
                                 <?php foreach($anos as $ano): ?>
                                 <option value="<?php echo $ano;?>"><?php echo $ano;?></option>
@@ -53,7 +53,7 @@
 
                     <div class="form-group col-md-3 col-sm-6">
                         <div class="select">
-                            <select class="form-control">
+                            <select class="form-control" class="tipo">
                                 <option value="">Tipo de Carro</option>
                                 <?php foreach($tipos as $tipo): ?>
                                 <option value="<?php echo $tipo->name;?>"><?php echo $tipo->name;?></option>

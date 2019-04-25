@@ -29,12 +29,12 @@
                         </div>
                         <div class="result-sorting-by">
                             <p>Ordenar por:</p>
-                            <form action="#" method="post">
+                            <form id="form_order" action="{{URL::full()}}" method="get">
                                 <div class="form-group select sorting-select">
-                                    <select class="form-control ">
-                                        <option>Preço (mais baixo)</option>
-                                        <option>Preço (mais alto)</option>
-                                        <option>Mais novos</option>
+                                    <select class="form-control" id="order" name="order">
+                                        <option value="cheaper">Preço (mais baixo)</option>
+                                        <option value="expensive">Preço (mais alto)</option>
+                                        <option value="newer">Mais novos</option>
                                     </select>
                                 </div>
                             </form>
@@ -88,34 +88,49 @@
                             <h5><i class="fa fa-filter" aria-hidden="true"></i> Encontre seu veículo </h5>
                         </div>
                         <div class="sidebar_filter">
-                            <form action="#" method="get">
+                            <form id="form_filter" action="{{route('veiculos')}}" method="get">
                                 <div class="form-group select">
-                                    <select class="form-control">
+                                    <select class="form-control" name="uf">
                                         <option value="">Localização</option>
+                                        <?php foreach($estados as $estado): ?>
+                                        <option value="<?php echo $estado->uf;?>"><?php echo $estado->name;?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group select">
-                                    <select class="form-control">
+                                    <select class="form-control" id="marca" name="marca">
                                         <option value="">Marca</option>
+                                        <?php foreach($marcas as $marca): ?>
+                                        <option value="<?php echo $marca->name;?>"
+                                                data-id="<?php echo $marca->id;?>">
+                                            <?php echo $marca->name;?>
+                                        </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group select">
-                                    <select class="form-control">
+                                    <select class="form-control" id="modelo" name="modelo">
                                         <option value="">Modelo</option>
                                     </select>
                                 </div>
                                 <div class="form-group select">
-                                    <select class="form-control">
-                                        <option value="">Ano Modelo</option>
+                                    <select class="form-control" name="ano">
+                                        <option value="">Ano</option>
+                                        <?php foreach($anos as $ano): ?>
+                                        <option value="<?php echo $ano;?>"><?php echo $ano;?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Faixa Preço ($) </label>
-                                    <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]"/>
+                                    <input id="price_range" type="text" class="span2" value="" data-slider-min="100" data-slider-max="150000" data-slider-step="100" data-slider-value="150000">
                                 </div>
                                 <div class="form-group select">
-                                    <select class="form-control">
+                                    <select class="form-control" name="tipo">
                                         <option value="">Tipo</option>
+                                        <?php foreach($tipos as $tipo): ?>
+                                        <option value="<?php echo $tipo->name;?>"><?php echo $tipo->name;?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -172,4 +187,47 @@
         </div>
     </section>
     <!--/Listing-grid-view-->
+@endsection
+
+@section('scripts')
+    <script>
+        (function ($) {
+            var FormFilter = $('#form_filter');
+            var Marca = FormFilter.find('#marca');
+            var Modelo = FormFilter.find('#modelo');
+
+            Marca.change(function () {
+                if (!$(this).val()) {
+                    Modelo.find('option:not(:first)').remove();
+
+                    return false;
+                }
+
+                $.get('/modelos/' + $(this).find('option:selected').data('id'), function (options) {
+                    Modelo.append(options);
+                });
+            });
+
+            FormFilter.submit(function () {
+                $(this).find(":input, selected").filter(function () {
+                    return !this.value;
+                }).attr("disabled", "disabled");
+                return true; // ensure form still submits
+            });
+
+            FormFilter.find(":input, selected").prop("disabled", false);
+
+            var FormOrder = $('#form_order');
+
+            FormOrder.find('#order').change(function () {
+                var order = $(this).val();
+
+                FormOrder.on('submit', function (e) {
+                    e.preventDefault();
+                    var action = $(this).attr('action');
+                    window.location.href = action + "&order=" + order;
+                }).submit();
+            });
+        })(jQuery);
+    </script>
 @endsection
