@@ -6,11 +6,15 @@ use App\Entities\Estado;
 use App\Entities\Marca;
 use App\Entities\Modelo;
 use App\Entities\Tipo;
+use App\Http\Traits\Pagination;
 use Illuminate\Http\Request;
 use App\Http\Filters\VeiculosFilter;
+use Illuminate\Support\Facades\URL;
 
 class IndexController extends Controller
 {
+
+    use Pagination;
 
     public function home()
     {
@@ -34,7 +38,9 @@ class IndexController extends Controller
 
         $data = $this->getGerais();
 
-        $data['veiculos'] = $filter->apply();
+        $data['veiculos'] = $this->paginate($filter->apply(), 15, null, [
+            'path' => URL::full()
+        ]);
 
         return view('veiculos', $data);
     }

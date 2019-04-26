@@ -462,12 +462,17 @@
                 });
             });
 
-            FormFilter.submit(function() {
-                $(this).find(":input, selected").filter(function(){ return !this.value; }).attr("disabled", "disabled");
+            FormFilter.submit(function () {
+                $(this).find(":input, selected").filter(function () {
+                    return !this.value;
+                }).attr("disabled", "disabled");
+
+                setTimeout(function () {
+                    FormFilter.find(":input, selected").prop("disabled", false);
+                }, 1000);
+
                 return true; // ensure form still submits
             });
-
-            FormFilter.find(":input, selected").prop("disabled", false);
         })(jQuery);
     </script>
 @endsection

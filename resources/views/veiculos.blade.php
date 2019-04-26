@@ -70,14 +70,10 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="pagination">
-                        <ul>
-                            <li class="current">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?php echo $veiculos->links();?>
+                        </div>
                     </div>
                 </div>
 
@@ -212,10 +208,13 @@
                 $(this).find(":input, selected").filter(function () {
                     return !this.value;
                 }).attr("disabled", "disabled");
-                return true; // ensure form still submits
-            });
 
-            FormFilter.find(":input, selected").prop("disabled", false);
+                setTimeout(function () {
+                    FormFilter.find(":input, selected").prop("disabled", false);
+                }, 1000);
+
+                return true;
+            });
 
             var FormOrder = $('#form_order');
 
