@@ -19,10 +19,19 @@ class IndexController extends Controller
 
     use Pagination;
 
+    private $veiculoRepository;
+
+    public function __construct()
+    {
+        $this->veiculoRepository = new VeiculoRepository();
+    }
+
     public function home()
     {
         $data = $this->getGerais();
 
+
+        $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
         $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
 
         return view('home', $data);
@@ -49,7 +58,7 @@ class IndexController extends Controller
             'path' => URL::full()
         ]);
 
-        $data['ultimos_veiculos'] = (new VeiculoRepository)->getUltimosVeiculos();
+        $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
 
         return view('veiculos', $data);
     }

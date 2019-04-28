@@ -132,101 +132,38 @@
             <div class="facts_section_bg"></div>
         </div>
     </section>
-    
+
     <!--/Fan-fact-->
 
     <!--Featured Car-->
     <section class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Featured Cars Special Offers</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                <h2>Últimos Veículos Cadastrados</h2>
             </div>
             <div class="row">
+                <?php foreach($ultimos_veiculos as $veiculo): ?>
                 <div class="col-list-3">
                     <div class="featured-car-list">
                         <div class="featured-car-img"><a href=""><img src="assets/images/featured-img-1.jpg" class="img-responsive" alt="Image"></a>
-                            <div class="label_icon">New</div>
-                            <div class="compare_item">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="compare">
-                                    <label for="compare">Compare</label>
-                                </div>
-                            </div>
+                            <div class="label_icon">{{$veiculo->tipo_name}}</div>
                         </div>
                         <div class="featured-car-content">
-                            <h6><a href="#">Maserati QUATTROPORTE 1,6</a></h6>
+                            <h6><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}}</a></h6>
                             <div class="price_info">
-                                <p class="featured-price">$90,000</p>
+                                <p class="featured-price">R$ {{formata_moeda($veiculo->valor)}}</p>
                                 <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span></div>
                             </div>
                             <ul>
-                                <li><i class="fa fa-road" aria-hidden="true"></i>0,000 km</li>
-                                <li><i class="fa fa-tachometer" aria-hidden="true"></i>30.000 miles</li>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i>2005 model</li>
-                                <li><i class="fa fa-car" aria-hidden="true"></i>Diesel</li>
-                                <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
-                                <li><i class="fa fa-superpowers" aria-hidden="true"></i>143 kW</li>
+                                <li><i class="fa fa-road" aria-hidden="true"></i>{{formata_kilometragem($veiculo->kilometragem)}} km</li>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>Ano {{$veiculo->ano_fabricacao}}</li>
+                                <li><i class="fa fa-car" aria-hidden="true"></i>{{$veiculo->combustivel_name}}</li>
+                                <li><i class="fa fa-paint-brush" aria-hidden="true"></i>{{$veiculo->cor_name}}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-list-3">
-                    <div class="featured-car-list">
-                        <div class="featured-car-img"><a href=""><img src="{{asset('assets/images/featured-img-2.jpg')}}" class="img-responsive" alt="Image"></a>
-                            <div class="label_icon">Used</div>
-                            <div class="compare_item">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="compare2">
-                                    <label for="compare2">Compare</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="featured-car-content">
-                            <h6><a href="#">Mazda CX-5 SX, V6, ABS, Sunroof</a></h6>
-                            <div class="price_info">
-                                <p class="featured-price">$90,000</p>
-                                <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span></div>
-                            </div>
-                            <ul>
-                                <li><i class="fa fa-road" aria-hidden="true"></i>0,000 km</li>
-                                <li><i class="fa fa-tachometer" aria-hidden="true"></i>30.000 miles</li>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i>2005 model</li>
-                                <li><i class="fa fa-car" aria-hidden="true"></i>Diesel</li>
-                                <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
-                                <li><i class="fa fa-superpowers" aria-hidden="true"></i>143 kW</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-list-3">
-                    <div class="featured-car-list">
-                        <div class="featured-car-img"><a href=""><img src="{{asset('assets/images/featured-img-3.jpg')}}" class="img-responsive" alt="Image"></a>
-                            <div class="label_icon">Used</div>
-                            <div class="compare_item">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="compare3">
-                                    <label for="compare3">Compare</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="featured-car-content">
-                            <h6><a href="#">BMW 535i</a></h6>
-                            <div class="price_info">
-                                <p class="featured-price">$90,000</p>
-                                <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span></div>
-                            </div>
-                            <ul>
-                                <li><i class="fa fa-road" aria-hidden="true"></i>0,000 km</li>
-                                <li><i class="fa fa-tachometer" aria-hidden="true"></i>30.000 miles</li>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i>2005 model</li>
-                                <li><i class="fa fa-car" aria-hidden="true"></i>Diesel</li>
-                                <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
-                                <li><i class="fa fa-superpowers" aria-hidden="true"></i>143 kW</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -364,19 +301,19 @@
             </div>
             <div class="row">
                 <?php foreach($ultimas_noticias as $noticia): ?>
-                    <div class="col-md-4 col-sm-4">
-                        <article class="blog-list">
-                            <div class="blog-info-box">
-                                <a href="#"><img src="{{$noticia->image}}" class="img-responsive" alt="image"></a>
-                                <ul>
-                                    <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$noticia->date_published}}</li>
-                                </ul>
-                            </div>
-                            <div class="blog-content">
-                                <h5><a href="#">{{$noticia->title}}</a></h5>
-                                <a href="{{$noticia->link}}" target="_blank" class="btn-link">Ler mais <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                        </article>
-                    </div>
+                <div class="col-md-4 col-sm-4">
+                    <article class="blog-list">
+                        <div class="blog-info-box">
+                            <a href="#"><img src="{{$noticia->image}}" class="img-responsive" alt="image"></a>
+                            <ul>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$noticia->date_published}}</li>
+                            </ul>
+                        </div>
+                        <div class="blog-content">
+                            <h5><a href="#">{{$noticia->title}}</a></h5>
+                            <a href="{{$noticia->link}}" target="_blank" class="btn-link">Ler mais <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+                    </article>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
