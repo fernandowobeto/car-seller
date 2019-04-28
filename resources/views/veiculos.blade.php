@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="product-listing-content">
-                                        <h5><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}} </a></h5>
+                                        <h5><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}}</a></h5>
                                         <p class="list-price">R$ {{formata_moeda($veiculo->valor)}}</p>
                                         <div class="car-location">
                                             <span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span>
@@ -150,30 +150,14 @@
                         </div>
                         <div class="recent_addedcars">
                             <ul>
+                                <?php foreach($ultimos_veiculos as $ultimo): ?>
                                 <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img src="assets/images/post_200x200_1.jpg" alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">Ford Shelby GT350</a>
-                                        <p class="widget_price">$92,000</p>
+                                    <div class="recent_post_img"><a href="#"><img src="assets/images/car_no_images.jpg" alt="image"></a></div>
+                                    <div class="recent_post_title"><a href="#">{{$ultimo->marca_name}}, {{$ultimo->modelo_name}}</a>
+                                        <p class="widget_price">R$ {{formata_moeda($ultimo->valor)}}</p>
                                     </div>
                                 </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img src="assets/images/post_200x200_2.jpg" alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">BMW 535i</a>
-                                        <p class="widget_price">$92,000</p>
-                                    </div>
-                                </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img src="assets/images/post_200x200_3.jpg" alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">Mazda CX-5 SX, V6, ABS, Sunroof </a>
-                                        <p class="widget_price">$92,000</p>
-                                    </div>
-                                </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img src="assets/images/post_200x200_4.jpg" alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">Ford Shelby GT350 </a>
-                                        <p class="widget_price">$92,000</p>
-                                    </div>
-                                </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>

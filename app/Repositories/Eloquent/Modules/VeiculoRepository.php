@@ -11,6 +11,29 @@ class VeiculoRepository
 
     public function getVeiculos(callable $filters): Collection
     {
+        $resource = $this->getQueryVeiculos();
+
+        if ($filters) {
+            $filters($resource);
+        }
+
+        $resource->orderBy('v.ano_modelo', 'desc');
+
+        return $resource->get();
+    }
+
+    public function getUltimosVeiculos()
+    {
+        $resource = $this->getQueryVeiculos();
+
+        $resource->orderBy('v.id', 'desc');
+        $resource->limit(6);
+
+        return $resource->get();
+    }
+
+    private function getQueryVeiculos()
+    {
         $resource = DB::table('veiculos as v')
             ->select(
                 'v.*',
@@ -25,15 +48,10 @@ class VeiculoRepository
             ->join('tipos as t', 't.id', '=', 'v.tipo_id')
             ->join('cores as c', 'c.id', '=', 'v.cor_id')
             ->join('combustiveis as cb', 'cb.id', '=', 'v.combustivel_id')
-            ->orderBy('v.id');
+            ->whereRaw("((v.data_aprovado + integer '30') > ?)", [date('Y-m-d')])
+            ->where('v.finalizado', false);
 
-        $resource->whereRaw("((v.data_aprovado + integer '30') > ?)", [date('Y-m-d')]);
-
-        $resource->where('v.finalizado', false);
-
-        $filters($resource);
-
-        return $resource->get();
+        return $resource;
     }
 
 }

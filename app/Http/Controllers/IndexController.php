@@ -7,9 +7,12 @@ use App\Entities\Marca;
 use App\Entities\Modelo;
 use App\Entities\Tipo;
 use App\Http\Traits\Pagination;
+use FernandoWobeto\UolMotor1Rss\Rss;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Http\Filters\VeiculosFilter;
 use Illuminate\Support\Facades\URL;
+use App\Repositories\Eloquent\Modules\VeiculoRepository;
 
 class IndexController extends Controller
 {
@@ -18,7 +21,11 @@ class IndexController extends Controller
 
     public function home()
     {
-        return view('home', $this->getGerais());
+        $data = $this->getGerais();
+
+        $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
+
+        return view('home', $data);
     }
 
     public function getModelos($id)
@@ -38,9 +45,11 @@ class IndexController extends Controller
 
         $data = $this->getGerais();
 
-        $data['veiculos'] = $this->paginate($filter->apply(), 15, null, [
+        $data['veiculos'] = $this->paginate($filter->apply(), 12, null, [
             'path' => URL::full()
         ]);
+
+        $data['ultimos_veiculos'] = (new VeiculoRepository)->getUltimosVeiculos();
 
         return view('veiculos', $data);
     }
