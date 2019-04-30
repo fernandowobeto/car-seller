@@ -11,6 +11,6 @@ class Cidade extends Model
 
     public function estado()
     {
-        return $this->belongsTo('App\Entities\Estado');
+        return $this->belongsTo(Estado::class);
     }
 }

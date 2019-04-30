@@ -16,7 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'cidade_id'
     ];
 
     /**
@@ -37,8 +40,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin ()
+    public function isAdmin()
     {
-      return $this->type == 1;
+        return $this->type == 1;
+    }
+
+    public function cidade()
+    {
+        return $this->belongsTo(Cidade::class);
     }
 }

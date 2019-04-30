@@ -30,7 +30,6 @@ class IndexController extends Controller
     {
         $data = $this->getGerais();
 
-
         $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
         $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
 

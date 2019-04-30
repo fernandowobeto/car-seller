@@ -14,6 +14,8 @@ Route::middleware('auth')->group(function () {
 
     Route::namespace('Perfil')->prefix('perfil')->name('perfil.')->group(function () {
         Route::get('/', 'PerfilController@index')->name('perfil');
+        Route::get('/cidades/{id}', 'PerfilController@getCidades')
+            ->where('id', '[0-9]+');
         Route::post('update', 'PerfilController@update')->name('update');
 
         Route::get('/veiculos', 'VeiculoController@index')->name('veiculos');
