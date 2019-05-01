@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Perfil;
 
 use App\Entities\Estado;
 use App\Entities\User;
+use App\Http\Requests\PerfilUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -27,6 +28,17 @@ class PerfilController extends Controller
             'estados',
             'cidades'
         ));
+    }
+
+    public function update(PerfilUpdateRequest $request)
+    {
+        $user = Auth::user();
+
+        $user->name      = $request->get('name');
+        $user->cidade_id = $request->get('cidade_id');
+        $user->save();
+
+        return redirect()->route('perfil.perfil');
     }
 
     public function getCidades(Request $request)
