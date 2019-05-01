@@ -57,7 +57,7 @@
                                         <h5><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}}</a></h5>
                                         <p class="list-price">R$ {{formata_moeda($veiculo->valor)}}</p>
                                         <div class="car-location">
-                                            <span><i class="fa fa-map-marker" aria-hidden="true"></i> Colorado, USA</span>
+                                            <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{$veiculo->cidade_name}}, {{$veiculo->uf}}</span>
                                         </div>
                                         <ul class="features_list">
                                             <li><i class="fa fa-road" aria-hidden="true"></i>{{formata_kilometragem($veiculo->kilometragem)}} km</li>
