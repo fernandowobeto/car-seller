@@ -20,10 +20,11 @@
     <link href="{{asset('assets/css/bootstrap-slider.min.css')}}" rel="stylesheet">
     <!--FontAwesome Font Style -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <!-- Element UI -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- SWITCHER -->
-    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="{{asset('assets/switcher/css/red.css')}}" title="red" media="all" data-default-color="true" />
+    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all"/>
+    <link rel="alternate stylesheet" type="text/css" href="{{asset('assets/switcher/css/red.css')}}" title="red" media="all" data-default-color="true"/>
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/images/favicon-icon/apple-touch-icon-144-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('assets/images/favicon-icon/apple-touch-icon-114-precomposed.png')}}">
@@ -61,7 +62,7 @@
                     <li><a href="{{route('home')}}">Inicial</a></li>
                     <li><a href="about-us.html">Sobre nós</a></li>
                     <li><a href="about-us.html">Catálogo</a></li>
-                    <li><a href="about-us.html">Vendedores</a></li>
+                    <li><a href="about-us.html">Revendas</a></li>
                 </ul>
             </div>
 
@@ -69,11 +70,11 @@
                 <div class="user_login">
                     @if(Auth::check())
                         <ul>
-                            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                            <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{route('perfil.perfil')}}">Perfil</a></li>
                                     <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>
-                                    <li><a href="{{route('perfil.mensagens')}}">Minhas Mensagens</a></li>
+                                    <li><a href="{{route('perfil.mensagens')}}">Minhas Propostas</a></li>
                                     <li><a href="{{route('logout')}}">Sair</a></li>
                                 </ul>
                             </li>
@@ -135,7 +136,7 @@
                     <div class="newsletter-form">
                         <form action="#">
                             <div class="form-group">
-                                <input type="email" class="form-control newsletter-input" required placeholder="Digite seu e-mail" />
+                                <input type="email" class="form-control newsletter-input" required placeholder="Digite seu e-mail"/>
                             </div>
                             <button type="submit" class="btn btn-block">Inscrever <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
                         </form>
@@ -157,9 +158,8 @@
 <!-- /Footer-->
 
 <!--Back to top-->
-<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<div id="back-top" class="back-top"><a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a></div>
 <!--/Back to top-->
-
 
 
 <!--Register-Form -->
@@ -198,7 +198,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h6 class="gray_text">Login the Quick Way</h6>
-                            <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook</a> <a href="#" class="btn btn-block twitter-btn"><i class="fa fa-twitter-square" aria-hidden="true"></i> Login with Twitter</a> <a href="#" class="btn btn-block googleplus-btn"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Login with Google+</a> </div>
+                            <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook</a> <a href="#" class="btn btn-block twitter-btn"><i class="fa fa-twitter-square" aria-hidden="true"></i> Login with Twitter</a> <a href="#" class="btn btn-block googleplus-btn"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Login with Google+</a></div>
                         <div class="mid_divider"></div>
                     </div>
                 </div>
@@ -246,6 +246,12 @@
 <!--/Forgot-password-Form -->
 
 <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.7.2/locale/pt-br.min.js"></script>
+<script>
+  ELEMENT.locale(ELEMENT.lang.ptBr);
+</script>
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/interface.js')}}"></script>

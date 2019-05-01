@@ -1002,10 +1002,11 @@ table thead th, table thead td {
 }
 
 .user_login > ul > li a {
-   color: #fff;
-   font-size: 12px;
-   font-weight: 900;
-   text-transform: uppercase;
+	color:#fff;
+	font-size:12px;
+	font-weight:900;
+	text-transform:uppercase;
+   padding: 8px;
 }
 
 .user_login > ul > li a i {
