@@ -23,7 +23,7 @@
     <!-- Element UI -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- SWITCHER -->
-    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all"/>
+    <link rel="stylesheet" id="switcher-css" type="text/css" href="{{asset('assets/switcher/css/switcher.css')}}" media="all"/>
     <link rel="alternate stylesheet" type="text/css" href="{{asset('assets/switcher/css/red.css')}}" title="red" media="all" data-default-color="true"/>
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/images/favicon-icon/apple-touch-icon-144-precomposed.png')}}">

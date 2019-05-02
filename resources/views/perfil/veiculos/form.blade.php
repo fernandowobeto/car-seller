@@ -3,7 +3,7 @@
     <h4>Adicionando veículo</h4>
     <hr>
     @include('form_errors')
-    <form action="{{route('perfil.veiculo.create')}}" method="POST" id="form_veiculo">
+    <form action="{{route('perfil.veiculo.create')}}" method="POST" id="form_veiculo" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="panel panel-default">
             <div class="panel-heading">Dados Principais</div>
@@ -139,15 +139,91 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Imagens</div>
+            <div id="file_manager" class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" id="btn_add_images" class="btn pull-right">Adicionar Imagens</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="file" id="file_input" name="images[]" multiple="multiple" style="display: none;">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3" v-for="(image, index) in images">
+                                <image-component :file="image"></image-component>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-default">Salvar</button>
     </form>
 @endsection
 @section('scripts')
     <script>
         (function ($) {
+            Vue.config.devtools = true;
+
+            Vue.component('imageComponent', {
+                props: ['file'],
+                template: `
+                <div class="thumbnail">
+                    <img :src="getUrl()">
+                    <div class="caption">
+                        <h6 v-text="file.name"></h6>
+                    </div>
+                </div>
+                `,
+                methods: {
+                    getUrl: function () {
+                        return URL.createObjectURL(this.file);
+                    }
+                }
+            });
+
             var FormVeiculo = $('#form_veiculo');
             var Marca = FormVeiculo.find('#marca_id');
             var Modelo = FormVeiculo.find('#modelo_id');
+
+            var ImageVueInstance = new Vue({
+                el: '#file_manager',
+                data: {
+                    images: []
+                },
+                methods: {
+                    setImages: function (imgs) {
+                        var total_added = this.images.length;
+                        var total_adding = imgs.length;
+                        var total_enabled = 8 - total_added;
+
+                        if (total_enabled == 0) {
+                            return false;
+                        }
+
+                        var length = total_enabled;
+
+                        if (total_adding < total_enabled) {
+                            length = total_adding;
+                        }
+
+                        for (var i = 0; i < length; i++) {
+                            this.images.push(imgs[i]);
+                        }
+                    },
+                    clearImages: function () {
+                        this.images = [];
+                    }
+                }
+            });
 
             Marca.change(function () {
                 if (!$(this).val()) {
@@ -159,6 +235,23 @@
                 $.get('/perfil/veiculo/modelos/' + $(this).val(), function (options) {
                     Modelo.append(options);
                 });
+            });
+
+            var BtnAddImages = document.getElementById('btn_add_images');
+            var ImageInput = document.getElementById('file_input');
+
+            BtnAddImages.addEventListener('click', function () {
+                ImageVueInstance.clearImages();
+                ImageInput.click();
+            });
+
+            ImageInput.addEventListener('change', function () {
+                if (ImageInput.files.length > 8) {
+                    ImageInput.value = '';
+                    alert('Selecione apenas 8 arquivos de imagens');
+                }
+
+                ImageVueInstance.setImages(ImageInput.files);
             });
         })(jQuery)
     </script>
