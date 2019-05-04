@@ -19,6 +19,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Filters\Perfil\VeiculosFilter;
+use Illuminate\Support\Facades\Storage;
 
 class VeiculoController extends Controller
 {
@@ -104,6 +105,12 @@ class VeiculoController extends Controller
             }
         }
 
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $file->store($veiculo->id, 'cars');
+            }
+        }
+
         DB::commit();
 
         return redirect()->route('perfil.veiculos');
@@ -114,7 +121,7 @@ class VeiculoController extends Controller
         $veiculo = Veiculo::find($id);
 
         $veiculo->finalizado = true;
-        $save = $veiculo->save();
+        $save                = $veiculo->save();
 
         return redirect()->route('perfil.veiculos');
     }

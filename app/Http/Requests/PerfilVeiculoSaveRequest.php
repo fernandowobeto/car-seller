@@ -39,7 +39,8 @@ class PerfilVeiculoSaveRequest extends FormRequest
             'valor'             => ['required', new MoneyBr],
             'tipo_id'           => 'required|integer',
             'opcional'          => [new ArrayOfIntegers],
-            'adicional'         => [new ArrayOfIntegers]
+            'adicional'         => [new ArrayOfIntegers],
+            'images.*'          => 'image|mimes:jpg,jpeg'
         ];
     }
 

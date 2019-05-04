@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent\Modules;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use PhpParser\Builder;
+use Illuminate\Support\Facades\Storage;
 
 class VeiculoRepository
 {
@@ -19,7 +20,7 @@ class VeiculoRepository
 
         $resource->orderBy('v.ano_modelo', 'desc');
 
-        return $resource->get();
+        return $this->get($resource);
     }
 
     public function getUltimosVeiculos()
@@ -29,7 +30,24 @@ class VeiculoRepository
         $resource->orderBy('v.id', 'desc');
         $resource->limit(6);
 
-        return $resource->get();
+        return $this->get($resource);
+    }
+
+    private function get($resource)
+    {
+        return $resource->get()->each(function ($veiculo) {
+            $veiculo->first_image = null;
+
+            if (Storage::disk('cars')->exists($veiculo->id)) {
+                $files = Storage::disk('cars')->files($veiculo->id);
+
+                if ($files) {
+                    $explode = explode('/', reset($files));
+
+                    $veiculo->first_image = end($explode);
+                }
+            }
+        });
     }
 
     private function getQueryVeiculos()
@@ -54,7 +72,8 @@ class VeiculoRepository
             ->join('cidades as ci', 'ci.id', '=', 'u.cidade_id')
             ->join('estados as e', 'e.id', '=', 'ci.estado_id')
             ->whereRaw("((v.data_aprovado + integer '30') > ?)", [date('Y-m-d')])
-            ->where('v.finalizado', false);
+            ->where('v.finalizado', false)
+            ->whereIn('v.id', [27, 28]);
 
         return $resource;
     }

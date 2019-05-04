@@ -44,7 +44,10 @@
                         @foreach($veiculos AS $veiculo)
                             <div class="col-md-4 grid_listing">
                                 <div class="product-listing-m gray-bg">
-                                    <div class="product-listing-img"><a href="#"><img src="assets/images/car_no_images.jpg" class="img-responsive" alt="image"/> </a>
+                                    <div class="product-listing-img">
+                                        <a href="#">
+                                            <img src="{{ $veiculo->first_image ? url('uploads/cars/'.$veiculo->id.'/'.$veiculo->first_image) : url('assets/images/car_no_images.jpg') }}" class="img-responsive" alt="image"/>
+                                        </a>
                                         <div class="label_icon">{{$veiculo->tipo_name}}</div>
                                         <div class="compare_item">
                                             <div class="checkbox">
