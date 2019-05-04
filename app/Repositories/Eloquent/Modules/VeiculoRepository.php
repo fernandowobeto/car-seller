@@ -72,8 +72,7 @@ class VeiculoRepository
             ->join('cidades as ci', 'ci.id', '=', 'u.cidade_id')
             ->join('estados as e', 'e.id', '=', 'ci.estado_id')
             ->whereRaw("((v.data_aprovado + integer '30') > ?)", [date('Y-m-d')])
-            ->where('v.finalizado', false)
-            ->whereIn('v.id', [27, 28]);
+            ->where('v.finalizado', false);
 
         return $resource;
     }
