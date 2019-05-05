@@ -1002,10 +1002,10 @@ table thead th, table thead td {
 }
 
 .user_login > ul > li a {
-	color:#fff;
-	font-size:12px;
-	font-weight:900;
-	text-transform:uppercase;
+   color: #fff;
+   font-size: 12px;
+   font-weight: 900;
+   text-transform: uppercase;
    padding: 8px;
 }
 
@@ -2806,6 +2806,11 @@ form .slider.slider-horizontal {
    width: 100%;
 }
 
+.grid_listing .product-listing-img {
+   height: 185px;
+   background-color: white;
+}
+
 .grid_listing .product-listing-img img {
    width: 100%;
 }
@@ -3910,6 +3915,16 @@ table.info-tabel tr td {
 .pagination ul li a {
    display: block;
    color: #555;
+}
+
+.pagination > li > a {
+   color: #fa2837;
+}
+
+.pagination > .active > span,
+.pagination > .active > span:hover {
+   background-color: #fa2837;
+   border-color: #fa2837;
 }
 
 .pagination ul li.current, .pagination ul li:hover a {

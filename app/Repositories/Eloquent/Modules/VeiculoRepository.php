@@ -69,8 +69,8 @@ class VeiculoRepository
             ->join('cores as c', 'c.id', '=', 'v.cor_id')
             ->join('combustiveis as cb', 'cb.id', '=', 'v.combustivel_id')
             ->join('users as u', 'u.id', '=', 'v.user_id')
-            ->join('cidades as ci', 'ci.id', '=', 'u.cidade_id')
-            ->join('estados as e', 'e.id', '=', 'ci.estado_id')
+            ->join('cidades as ci', 'ci.id', '=', 'u.cidade_id', 'left')
+            ->join('estados as e', 'e.id', '=', 'ci.estado_id', 'left')
             ->whereRaw("((v.data_aprovado + integer '30') > ?)", [date('Y-m-d')])
             ->where('v.finalizado', false);
 
