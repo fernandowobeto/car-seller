@@ -14,10 +14,10 @@
                         <form action="{{route('login_action')}}" method="POST">
                             {{csrf_field()}}
                             <div class="form-group">
-                                <input type="text" class="form-control" name="email" value="fernandowobeto@gmail.com" placeholder="Usuário">
+                                <input type="text" class="form-control" name="email" value="{{env('LOGIN', '')}}" placeholder="Usuário">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" value="123" placeholder="Senha">
+                                <input type="password" class="form-control" name="password" value="{{env('PASSWORD', '')}}" placeholder="Senha">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Logar" class="btn btn-block">
