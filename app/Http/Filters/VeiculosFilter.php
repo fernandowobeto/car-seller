@@ -17,9 +17,20 @@ class VeiculosFilter extends FiltersAbstract
 
         return $this->veiculoRepository->getVeiculos(function ($db) use ($request) {
             if ($request->has('uf')) {
-                //   $db->where('v.id', '=', $request->input('placa'));
+                $db->where('e.uf', '=', $request->input('uf'));
             }
 
+            if ($request->has('marca')) {
+                $db->where('m.name', '=', $request->input('marca'));
+            }
+
+            if ($request->has('modelo')) {
+                $db->where('mo.name', '=', $request->input('modelo'));
+            }
+
+            if ($request->has('tipo')) {
+                $db->where('t.name', '=', $request->input('tipo'));
+            }
         });
     }
 
