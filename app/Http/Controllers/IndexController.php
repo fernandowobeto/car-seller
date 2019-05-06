@@ -52,10 +52,10 @@ class IndexController extends Controller
         $filter = new VeiculosFilter($request);
 
         $data = $this->getGerais();
-
+        
         $data['veiculos'] = $this->paginate($filter->apply(), 12, null, [
-            'path' => URL::full()
-        ]);
+            'path' => route('veiculos')
+        ])->appends($request->except(['page', 'q']));
 
         $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
 
