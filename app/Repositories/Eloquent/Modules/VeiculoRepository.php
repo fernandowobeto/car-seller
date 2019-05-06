@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class VeiculoRepository
 {
 
-    public function getVeiculos(callable $filters): Collection
+    public function getVeiculos(callable $filters, $order = 'v.id', $direction = 'asc'): Collection
     {
         $resource = $this->getQueryVeiculos();
 
@@ -18,7 +18,7 @@ class VeiculoRepository
             $filters($resource);
         }
 
-        $resource->orderBy('v.ano_modelo', 'desc');
+        $resource->orderBy($order, $direction);
 
         return $this->get($resource);
     }

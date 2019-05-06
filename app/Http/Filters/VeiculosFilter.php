@@ -31,12 +31,47 @@ class VeiculosFilter extends FiltersAbstract
             if ($request->has('tipo')) {
                 $db->where('t.name', '=', $request->input('tipo'));
             }
-        });
+        }, $this->getOrder(), $this->getDirection());
     }
 
     protected function boot()
     {
         $this->veiculoRepository = new VeiculoRepository();
+    }
+
+    private function getOrder()
+    {
+        $order = 'v.id';
+
+        switch ($this->request->input('order')) {
+            case 'expensive':
+                $order = 'v.valor';
+                break;
+            case 'cheaper':
+                $order = 'v.valor';
+                break;
+            case 'newer':
+                $order = 'v.ano_fabricacao';
+                break;
+        }
+
+        return $order;
+    }
+
+    private function getDirection()
+    {
+        $direction = 'asc';
+
+        switch ($this->request->input('order')) {
+            case 'expensive':
+                $direction = 'desc';
+                break;
+            case 'newer':
+                $direction = 'desc';
+                break;
+        }
+
+        return $direction;
     }
 
 }
