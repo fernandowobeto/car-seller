@@ -29,9 +29,10 @@
                         </div>
                         <div class="result-sorting-by">
                             <p>Ordenar por:</p>
-                            <form id="form_order" action="{{URL::full()}}" method="get">
+                            <form id="form_order" action="{{$url_order}}" method="get">
                                 <div class="form-group select sorting-select">
                                     <select class="form-control" id="order" name="order">
+                                        <option value="">Selecione</option>
                                         <option value="cheaper">Preço (mais baixo)</option>
                                         <option value="expensive">Preço (mais alto)</option>
                                         <option value="newer">Mais novos</option>
@@ -207,6 +208,10 @@
 
             FormOrder.find('#order').change(function () {
                 var order = $(this).val();
+
+                if (!order) {
+                    return false;
+                }
 
                 FormOrder.on('submit', function (e) {
                     e.preventDefault();
