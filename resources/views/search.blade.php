@@ -48,7 +48,15 @@
 
                     <div class="form-group col-md-6 col-sm-6">
                         <label class="form-label">Preço Máximo (R$) </label>
-                        <input id="price_range" type="text" class="span2" value="" data-slider-min="100" data-slider-max="150000" data-slider-step="100" data-slider-value="150000">
+                        <input type="text"
+                               id="price_range"
+                               name="price"
+                               class="span2"
+                               value="0"
+                               data-slider-min="0"
+                               data-slider-max="150000"
+                               data-slider-step="100"
+                               data-slider-value="0">
                     </div>
 
                     <div class="form-group col-md-3 col-sm-6">

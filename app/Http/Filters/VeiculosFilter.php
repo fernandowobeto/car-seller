@@ -28,6 +28,20 @@ class VeiculosFilter extends FiltersAbstract
                 $db->where('mo.name', '=', $request->input('modelo'));
             }
 
+            if ($request->has('ano')) {
+                $db->where(function ($query) use ($request) {
+                    $query->where('v.ano_fabricacao', $request->input('ano'));
+                    $query->orWhere('v.ano_modelo', $request->input('ano'));
+                });
+            }
+
+            if (
+                $request->has('price') &&
+                $request->input('price') > 0
+            ) {
+                $db->where('v.valor', '<=', $request->input('price'));
+            }
+
             if ($request->has('tipo')) {
                 $db->where('t.name', '=', $request->input('tipo'));
             }

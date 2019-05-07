@@ -123,7 +123,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Faixa Preço ($) </label>
-                                    <input id="price_range" type="text" class="span2" value="" data-slider-min="100" data-slider-max="150000" data-slider-step="100" data-slider-value="150000">
+                                    <input type="text"
+                                           id="price_range"
+                                           name="price"
+                                           class="span2"
+                                           data-slider-min="0"
+                                           data-slider-max="150000"
+                                           data-slider-step="100"
+                                           data-slider-value="0">
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control" name="tipo">
