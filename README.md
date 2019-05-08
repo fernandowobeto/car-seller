@@ -4,6 +4,7 @@ Site e admin em PHP para compra/venda de veículos.
 
 * Cadastros
 	- Veículos
+	- Fotos
 	- Marcas
 	- Modelos
 	- Tipos
@@ -12,6 +13,8 @@ Site e admin em PHP para compra/venda de veículos.
 	- Câmbios
 	- Características
 	- Adicionais
+	- Depoimentos
+	- Configurações
 
 * Perfil de Úsuário
 * Mensagens de Proposta
