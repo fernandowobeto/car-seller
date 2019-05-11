@@ -56,7 +56,7 @@
                             <i class="fa fa-money" aria-hidden="true"></i>
                         </div>
                         <h5>Melhores Preços</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                        <p>Avalie e compare em revendas ou particular.</p>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                         </div>
                         <h5>Compra e Venda</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                        <p>Compre ou venda o seu veículo hoje.</p>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@
                             <i class="fa fa-history" aria-hidden="true"></i>
                         </div>
                         <h5>Contato Ágil</h5>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                        <p>Entre em contato diretamente com os vendedores.</p>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
                             <i class="fa fa-users" aria-hidden="true"></i>
                         </div>
                         <h5>Profissionais</h5>
-                        <p>Todos as revendas são avaliadas e certificadas. </p>
+                        <p>Todos as revendas são avaliadas e certificadas pelo site.</p>
                     </div>
                 </div>
             </div>
