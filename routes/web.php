@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/mensagens', 'VeiculoController@mensagens')->name('mensagens');
 
         Route::middleware('auth.admin')->group(function () {
+            Route::get('/configuracoes', 'ConfiguracoesController@form')->name('configuracoes');
+            Route::post('/configuracoes', 'ConfiguracoesController@save')->name('configuracoes.save');
+
             Route::get('/marcas', 'MarcaController@index')->name('marcas');
             Route::get('/marcas/form/{id?}', 'MarcaController@form')
                 ->name('marca.form')
