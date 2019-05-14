@@ -6,6 +6,7 @@ use App\Entities\Estado;
 use App\Entities\Marca;
 use App\Entities\Modelo;
 use App\Entities\Tipo;
+use App\Entities\Configuracao;
 use App\Http\Traits\Pagination;
 use FernandoWobeto\UolMotor1Rss\Rss;
 use Illuminate\Support\Collection;
@@ -30,6 +31,7 @@ class IndexController extends Controller
     {
         $data = $this->getGerais();
 
+        $data['configuracao']     = Configuracao::first();
         $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
         $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
 

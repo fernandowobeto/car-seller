@@ -46,7 +46,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <h2>Bem vindo ao CarSeller</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                <p>{{$configuracao->bem_vindo}}</p>
             </div>
 
             <div class="row">
@@ -99,7 +99,7 @@
         <div class=" col-md-6 vc_col section-padding">
             <div class="fact_m white-text">
                 <h2>Sobre o CallSeller</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                <p>{{$configuracao->sobre}}</p>
 
                 <ul>
                     <li>
@@ -178,26 +178,7 @@
         <div class=" col-md-6 vc_col section-padding">
             <div class="our_services white-text">
                 <h2>Our Services</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised
-                    words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                    hidden in the middle of text. </p>
-                <!--Services-info-->
-                <div class="services_info">
-                    <div class="icon_box">
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                    </div>
-                    <h4><a href="#">Sale News Cars</a></h4>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
-                </div>
-
-                <!--Services-info-->
-                <div class="services_info">
-                    <div class="icon_box">
-                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    </div>
-                    <h4><a href="#">Sale News Cars</a></h4>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
-                </div>
+                <p>{{$configuracao->servicos}}</p>
             </div>
         </div>
     </section>
@@ -208,7 +189,7 @@
         <div class="container div_zindex">
             <div class="section-header text-center">
                 <h2>Our Testimonial</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+                <p>{{$configuracao->depoimentos}}</p>
             </div>
             <div class="row">
                 <div id="testimonial-slider-2">
