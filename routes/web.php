@@ -2,6 +2,7 @@
 
 Route::get('/', 'IndexController@home')->name('home');
 Route::get('/veiculos', 'IndexController@veiculos')->name('veiculos');
+Route::get('/about', 'IndexController@about')->name('about');
 
 Route::get('/modelos/{id}', 'IndexController@getModelos')
     ->where('id', '[0-9]+');

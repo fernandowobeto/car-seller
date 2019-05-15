@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
                     <li><a href="{{route('home')}}">Inicial</a></li>
-                    <li><a href="about-us.html">Sobre nós</a></li>
+                    <li><a href="{{route('about')}}">Sobre nós</a></li>
                     <li><a href="about-us.html">Catálogo</a></li>
                     <li><a href="about-us.html">Revendas</a></li>
                 </ul>
@@ -250,7 +250,7 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.7.2/locale/pt-br.min.js"></script>
 <script>
-  ELEMENT.locale(ELEMENT.lang.ptBr);
+    ELEMENT.locale(ELEMENT.lang.ptBr);
 </script>
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>

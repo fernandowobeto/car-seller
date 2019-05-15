@@ -65,6 +65,11 @@ class IndexController extends Controller
         return view('veiculos', $data);
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
     private function getGerais()
     {
         $estados = Estado::orderBy('name')->get();
