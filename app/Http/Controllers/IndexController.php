@@ -67,7 +67,9 @@ class IndexController extends Controller
 
     public function about()
     {
-        return view('about');
+        $configuracao = Configuracao::first();
+
+        return view('about', compact('configuracao'));
     }
 
     private function getGerais()
