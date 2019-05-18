@@ -110,20 +110,20 @@
 
                     <li>
                         <i class="fa fa-car" aria-hidden="true"></i>
-                        <h2>1200+</h2>
-                        <p>New Cars For Sale</p>
+                        <h2>{{$estatisticas->new_vehicles}}</h2>
+                        <p>Novos a venda</p>
                     </li>
 
                     <li>
                         <i class="fa fa-car" aria-hidden="true"></i>
-                        <h2>1000+</h2>
-                        <p>Used Cars For Sale</p>
+                        <h2>{{$estatisticas->used_vehicles}}</h2>
+                        <p>Usados a venda</p>
                     </li>
 
                     <li>
                         <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        <h2>600+</h2>
-                        <p>Satisfied Customers</p>
+                        <h2>{{$estatisticas->sold_vehicles}}</h2>
+                        <p>Clientes satisfeitos</p>
                     </li>
                 </ul>
             </div>

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Filters\VeiculosFilter;
 use Illuminate\Support\Facades\URL;
 use App\Repositories\Eloquent\Modules\VeiculoRepository;
+use App\Repositories\Eloquent\Modules\EstatisticaRepository;
 
 class IndexController extends Controller
 {
@@ -21,10 +22,12 @@ class IndexController extends Controller
     use Pagination;
 
     private $veiculoRepository;
+    private $estatisticaRepository;
 
     public function __construct()
     {
-        $this->veiculoRepository = new VeiculoRepository();
+        $this->veiculoRepository     = new VeiculoRepository();
+        $this->estatisticaRepository = new EstatisticaRepository();
     }
 
     public function home()
@@ -34,6 +37,7 @@ class IndexController extends Controller
         $data['configuracao']     = Configuracao::first();
         $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
         $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
+        $data['estatisticas']     = $this->estatisticaRepository->all();
 
         return view('home', $data);
     }
