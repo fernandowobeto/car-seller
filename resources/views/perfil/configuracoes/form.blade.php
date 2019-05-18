@@ -41,6 +41,18 @@
             <label for="">Dias Anúncio</label>
             <input type="text" name="dias_anuncios" id="dias_anuncios" class="form-control" value="{{$configuracao->dias_anuncios ?? ''}}">
         </div>
+        <div class="form-group">
+            <label for="">Tipo Para Veículos Novos</label>
+            <select name="id_tipo_novo_veiculo" id="id_tipo_novo_veiculo" class="form-control">
+                <option value="">Selecione</option>
+                @foreach($tipos as $tipo)
+                    <option
+                            value="{{$tipo->id}}"
+                            {{option_selected(($configuracao->id_tipo_novo_veiculo ?? '') == $tipo->id)}}
+                    >{{$tipo->name}}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-default">Salvar</button>
     </form>
 @endsection

@@ -24,6 +24,7 @@ class CreateConfiguracoesTable extends Migration
             $table->text('nossa_missao');
             $table->text('porque_escolher');
             $table->integer('dias_anuncios')->default(30);
+            $table->integer('id_tipo_novo_veiculo')->references('id')->on('tipos');
             $table->timestamps();
         });
     }

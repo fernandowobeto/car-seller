@@ -2,7 +2,7 @@
 
 function is_valid_int($int)
 {
-    return filter_var($int, FILTER_VALIDATE_INT) AND
+    return filter_var($int, FILTER_VALIDATE_INT) &&
         $int <= PHP_INT_MAX;
 }
 
@@ -29,4 +29,9 @@ function formata_moeda($moeda)
 function formata_kilometragem($km)
 {
     return number_format($km, 0, '', '.');
+}
+
+function option_selected(bool $bool)
+{
+    return $bool ? ' selected' : '';
 }
