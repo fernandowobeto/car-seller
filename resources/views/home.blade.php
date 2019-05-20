@@ -290,7 +290,7 @@
                                 <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$noticia->date_published}}</li>
                             </ul>
                         </div>
-                        <div class="blog-content">
+                        <div class="blog-content last-news-title">
                             <h5><a href="#">{{$noticia->title}}</a></h5>
                             <a href="{{$noticia->link}}" target="_blank" class="btn-link">Ler mais <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
                     </article>

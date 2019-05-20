@@ -1875,6 +1875,10 @@ nav.navbar {
    line-height: 26px;
 }
 
+.blog-content.last-news-title{
+   min-height: 160px;
+}
+
 .blog-content h5 a {
    color: #111;
 }
