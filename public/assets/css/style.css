@@ -1875,8 +1875,13 @@ nav.navbar {
    line-height: 26px;
 }
 
-.blog-content.last-news-title{
+.blog-content.last-news-title {
    min-height: 160px;
+}
+
+.blog-content.last-news-title h5 {
+   height: 80px;
+   overflow-y: hidden;
 }
 
 .blog-content h5 a {
