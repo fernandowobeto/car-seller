@@ -108,6 +108,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/cidades/form', 'CidadeController@form')
                 ->name('cidade.form');
             Route::post('/cidades/create', 'CidadeController@create')->name('cidade.create');
+
+            Route::get('/depoimentos', 'DepoimentoController@index')->name('depoimentos');
+            Route::get('/depoimentos/form/{id?}', 'DepoimentoController@form')
+                ->name('depoimento.form')
+                ->where('id', '[0-9]+');
+            Route::post('/depoimentos/create', 'DepoimentoController@create')->name('depoimento.create');
+            Route::post('/depoimentos/update/{id}', 'DepoimentoController@update')
+                ->name('depoimento.update')
+                ->where('id', '[0-9]+');
         });
     });
 });
