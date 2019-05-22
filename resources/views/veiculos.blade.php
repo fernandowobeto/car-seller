@@ -201,7 +201,7 @@
 
             FormFilter.submit(function () {
                 $(this).find(":input, selected").filter(function () {
-                    return !this.value;
+                    return !this.value || this.value == 0;
                 }).attr("disabled", "disabled");
 
                 setTimeout(function () {
