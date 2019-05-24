@@ -74,7 +74,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{route('perfil.perfil')}}">Perfil</a></li>
                                     <li><a href="{{route('perfil.veiculos')}}">Meus Veículos</a></li>
-                                    <li><a href="{{route('perfil.mensagens')}}">Minhas Propostas</a></li>
+                                    <li><a href="{{route('perfil.propostas')}}">Minhas Propostas</a></li>
                                     <li><a href="{{route('logout')}}">Sair</a></li>
                                 </ul>
                             </li>

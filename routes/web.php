@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/veiculo/create', 'VeiculoController@create')->name('veiculo.create');
         Route::middleware('auth.veiculo.finalizar')->get('/veiculo/finalizar/{id}', 'VeiculoController@finalizar')
             ->where('id', '[0-9]+')->name('veiculo.finalizar');
-        Route::get('/mensagens', 'VeiculoController@mensagens')->name('mensagens');
+        Route::get('/propostas', 'PropostaController@index')->name('propostas');
 
         Route::middleware('auth.admin')->group(function () {
             Route::get('/configuracoes', 'ConfiguracoesController@form')->name('configuracoes');
