@@ -6,15 +6,12 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateVeiculoPropostasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('veiculo_propostas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('veiculo_id')->references('id')->on('veiculos');
             $table->string('name');
             $table->string('email');
             $table->string('phone', 14);
@@ -24,11 +21,6 @@ class CreateVeiculoPropostasTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('veiculo_propostas');
