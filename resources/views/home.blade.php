@@ -193,65 +193,17 @@
             </div>
             <div class="row">
                 <div id="testimonial-slider-2">
-                    <div class="testimonial_wrap">
-                        <div class="testimonial-img">
-                            <img src="assets/images/testimonial-img-1.jpg" alt="image">
+                    @foreach($depoimentos as $depoimento)
+                        <div class="testimonial_wrap">
+                            <div class="testimonial-img">
+                                <img src="assets/images/testimonial-img-1.jpg" alt="image">
+                            </div>
+                            <div class="testimonial-heading">
+                                <h5>{{$depoimento->name}}</h5>
+                            </div>
+                            <p>{{$depoimento->testimonial}}</p>
                         </div>
-                        <div class="testimonial-heading">
-                            <h5>Donald Brooks</h5>
-                            <span class="client-designation">CEO of xzy company</span>
-                        </div>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et
-                            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt .</p>
-                    </div>
-
-                    <div class="testimonial_wrap">
-                        <div class="testimonial-img">
-                            <img src="assets/images/testimonial-img-2.jpg" alt="image">
-                        </div>
-                        <div class="testimonial-heading">
-                            <h5>Enzo Giovanotelli </h5>
-                            <span class="client-designation">CEO of xzy company</span>
-                        </div>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et
-                            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt .</p>
-                    </div>
-
-                    <div class="testimonial_wrap">
-                        <div class="testimonial-img">
-                            <img src="assets/images/testimonial-img-3.jpg" alt="image">
-                        </div>
-                        <div class="testimonial-heading">
-                            <h5>Donald Brooks</h5>
-                            <span class="client-designation">CEO of xzy company</span>
-                        </div>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et
-                            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt .</p>
-                    </div>
-
-                    <div class="testimonial_wrap">
-                        <div class="testimonial-img">
-                            <img src="assets/images/testimonial-img-4.jpg" alt="image">
-                        </div>
-                        <div class="testimonial-heading">
-                            <h5>Enzo Giovanotelli </h5>
-                            <span class="client-designation">CEO of xzy company</span>
-                        </div>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et
-                            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt .</p>
-                    </div>
-
-                    <div class="testimonial_wrap">
-                        <div class="testimonial-img">
-                            <img src="assets/images/testimonial-img-2.jpg" alt="image">
-                        </div>
-                        <div class="testimonial-heading">
-                            <h5>Enzo Giovanotelli </h5>
-                            <span class="client-designation">CEO of xzy company</span>
-                        </div>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et
-                            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt .</p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

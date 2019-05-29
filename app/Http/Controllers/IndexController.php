@@ -8,6 +8,7 @@ use App\Entities\Modelo;
 use App\Entities\Tipo;
 use App\Entities\Configuracao;
 use App\Http\Traits\Pagination;
+use App\Repositories\Eloquent\Modules\DepoimentoRepository;
 use FernandoWobeto\UolMotor1Rss\Rss;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
@@ -23,11 +24,13 @@ class IndexController extends Controller
 
     private $veiculoRepository;
     private $estatisticaRepository;
+    private $depoimentoRepository;
 
     public function __construct()
     {
         $this->veiculoRepository     = new VeiculoRepository();
         $this->estatisticaRepository = new EstatisticaRepository();
+        $this->depoimentoRepository  = new DepoimentoRepository();
     }
 
     public function home()
@@ -35,6 +38,7 @@ class IndexController extends Controller
         $data = $this->getGerais();
 
         $data['configuracao']     = Configuracao::first();
+        $data['depoimentos']      = $this->depoimentoRepository->allActive();
         $data['ultimos_veiculos'] = $this->veiculoRepository->getUltimosVeiculos();
         $data['ultimas_noticias'] = (new Collection((new Rss())->get()))->slice(0, 6);
         $data['estatisticas']     = $this->estatisticaRepository->all();
