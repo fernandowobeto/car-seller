@@ -80,6 +80,11 @@ class IndexController extends Controller
         return view('about', compact('configuracao'));
     }
 
+    public function detail ($id)
+    {
+        return view('detail');
+    }
+
     private function getGerais()
     {
         $estados = Estado::orderBy('name')->get();

@@ -46,7 +46,7 @@
                             <div class="col-md-4 grid_listing">
                                 <div class="product-listing-m gray-bg">
                                     <div class="product-listing-img">
-                                        <a href="#">
+                                        <a href="{{route('veiculo.detail', ['id' => $veiculo->id])}}">
                                             <img src="{{ $veiculo->first_image ? url('uploads/cars/'.$veiculo->id.'/'.$veiculo->first_image) : url('assets/images/car_no_images.jpg') }}" class="img-responsive" alt="image"/>
                                         </a>
                                         <div class="label_icon">{{$veiculo->tipo_name}}</div>
@@ -58,7 +58,11 @@
                                         </div>
                                     </div>
                                     <div class="product-listing-content">
-                                        <h5><a href="#">{{$veiculo->marca_name}}, {{$veiculo->modelo_name}}</a></h5>
+                                        <h5>
+                                            <a href="{{route('veiculo.detail', ['id' => $veiculo->id])}}">
+                                                {{$veiculo->marca_name}}, {{$veiculo->modelo_name}}
+                                            </a>
+                                        </h5>
                                         <p class="list-price">R$ {{formata_moeda($veiculo->valor)}}</p>
                                         <div class="car-location">
                                             <span><i class="fa fa-map-marker" aria-hidden="true"></i> {{$veiculo->cidade_name}}, {{$veiculo->uf}}</span>
