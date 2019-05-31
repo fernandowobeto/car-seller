@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', 'IndexController@home')->name('home');
-Route::get('/veiculos', 'IndexController@veiculos')->name('veiculos');
+Route::get('/vehicles', 'IndexController@veiculos')->name('veiculos');
 Route::get('/about', 'IndexController@about')->name('about');
 Route::get('/detail/{id}', 'IndexController@detail')->name('veiculo.detail')
     ->where('id', '[0-9]+');
@@ -15,110 +15,110 @@ Route::post('/login', 'LoginController@login_action')->name('login_action');
 Route::middleware('auth')->group(function () {
     Route::get('/logout', 'LoginController@logout')->name('logout');
 
-    Route::namespace('Perfil')->prefix('perfil')->name('perfil.')->group(function () {
+    Route::namespace('Perfil')->prefix('profile')->name('perfil.')->group(function () {
         Route::get('/', 'PerfilController@index')->name('perfil');
         Route::get('/cidades/{id}', 'PerfilController@getCidades')
             ->where('id', '[0-9]+');
         Route::post('update', 'PerfilController@update')->name('update');
 
-        Route::get('/veiculos', 'VeiculoController@index')->name('veiculos');
-        Route::get('/veiculo/form', 'VeiculoController@form')->name('veiculo.form');
-        Route::get('/veiculo/modelos/{id}', 'VeiculoController@getModelos')
+        Route::get('/vehicles', 'VeiculoController@index')->name('veiculos');
+        Route::get('/vehicle/form', 'VeiculoController@form')->name('veiculo.form');
+        Route::get('/vehicle/models/{id}', 'VeiculoController@getModelos')
             ->where('id', '[0-9]+');
-        Route::post('/veiculo/create', 'VeiculoController@create')->name('veiculo.create');
-        Route::middleware('auth.veiculo.finalizar')->get('/veiculo/finalizar/{id}', 'VeiculoController@finalizar')
+        Route::post('/vehicle/create', 'VeiculoController@create')->name('veiculo.create');
+        Route::middleware('auth.veiculo.finalizar')->get('/vehicle/finish/{id}', 'VeiculoController@finalizar')
             ->where('id', '[0-9]+')->name('veiculo.finalizar');
-        Route::get('/propostas', 'PropostaController@index')->name('propostas');
-        Route::get('/propostas/detail/{id}', 'PropostaController@detail')
+        Route::get('/proposals', 'PropostaController@index')->name('propostas');
+        Route::get('/proposals/detail/{id}', 'PropostaController@detail')
             ->where('id', '[0-9]+')->name('propostas.detail');
 
         Route::middleware('auth.admin')->group(function () {
-            Route::get('/configuracoes', 'ConfiguracoesController@form')->name('configuracoes');
-            Route::post('/configuracoes', 'ConfiguracoesController@save')->name('configuracoes.save');
+            Route::get('/settings', 'ConfiguracoesController@form')->name('configuracoes');
+            Route::post('/settings', 'ConfiguracoesController@save')->name('configuracoes.save');
 
-            Route::get('/marcas', 'MarcaController@index')->name('marcas');
-            Route::get('/marcas/form/{id?}', 'MarcaController@form')
+            Route::get('/brands', 'MarcaController@index')->name('marcas');
+            Route::get('/brands/form/{id?}', 'MarcaController@form')
                 ->name('marca.form')
                 ->where('id', '[0-9]+');
-            Route::post('/marcas/create', 'MarcaController@create')->name('marca.create');
-            Route::post('/marcas/update/{id}', 'MarcaController@update')
+            Route::post('/brands/create', 'MarcaController@create')->name('marca.create');
+            Route::post('/brands/update/{id}', 'MarcaController@update')
                 ->name('marca.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/modelos', 'ModeloController@index')->name('modelos');
-            Route::get('/modelos/form/{id?}', 'ModeloController@form')
+            Route::get('/models', 'ModeloController@index')->name('modelos');
+            Route::get('/models/form/{id?}', 'ModeloController@form')
                 ->name('modelo.form')
                 ->where('id', '[0-9]+');
-            Route::post('/modelos/create', 'ModeloController@create')->name('modelo.create');
-            Route::post('/modelos/update/{id}', 'ModeloController@update')
+            Route::post('/models/create', 'ModeloController@create')->name('modelo.create');
+            Route::post('/models/update/{id}', 'ModeloController@update')
                 ->name('modelo.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/cores', 'CorController@index')->name('cores');
-            Route::get('/cores/form/{id?}', 'CorController@form')
+            Route::get('/colors', 'CorController@index')->name('cores');
+            Route::get('/colors/form/{id?}', 'CorController@form')
                 ->name('cor.form')
                 ->where('id', '[0-9]+');
-            Route::post('/cores/create', 'CorController@create')->name('cor.create');
-            Route::post('/cores/update/{id}', 'CorController@update')
+            Route::post('/colors/create', 'CorController@create')->name('cor.create');
+            Route::post('/colors/update/{id}', 'CorController@update')
                 ->name('cor.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/cambios', 'CambioController@index')->name('cambios');
-            Route::get('/cambios/form/{id?}', 'CambioController@form')
+            Route::get('/exchanges', 'CambioController@index')->name('cambios');
+            Route::get('/exchanges/form/{id?}', 'CambioController@form')
                 ->name('cambio.form')
                 ->where('id', '[0-9]+');
-            Route::post('/cambios/create', 'CambioController@create')->name('cambio.create');
-            Route::post('/cambios/update/{id}', 'CambioController@update')
+            Route::post('/exchanges/create', 'CambioController@create')->name('cambio.create');
+            Route::post('/exchanges/update/{id}', 'CambioController@update')
                 ->name('cambio.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/opcionais', 'OpcionalController@index')->name('opcionais');
-            Route::get('/opcionais/form/{id?}', 'OpcionalController@form')
+            Route::get('/optionals', 'OpcionalController@index')->name('opcionais');
+            Route::get('/optionals/form/{id?}', 'OpcionalController@form')
                 ->name('opcional.form')
                 ->where('id', '[0-9]+');
-            Route::post('/opcionais/create', 'OpcionalController@create')->name('opcional.create');
-            Route::post('/opcionais/update/{id}', 'OpcionalController@update')
+            Route::post('/optionals/create', 'OpcionalController@create')->name('opcional.create');
+            Route::post('/optionals/update/{id}', 'OpcionalController@update')
                 ->name('opcional.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/adicionais', 'AdicionalController@index')->name('adicionais');
-            Route::get('/adicionais/form/{id?}', 'AdicionalController@form')
+            Route::get('/additional', 'AdicionalController@index')->name('adicionais');
+            Route::get('/additional/form/{id?}', 'AdicionalController@form')
                 ->name('adicional.form')
                 ->where('id', '[0-9]+');
-            Route::post('/adicionais/create', 'AdicionalController@create')->name('adicional.create');
-            Route::post('/adicionais/update/{id}', 'AdicionalController@update')
+            Route::post('/additional/create', 'AdicionalController@create')->name('adicional.create');
+            Route::post('/additional/update/{id}', 'AdicionalController@update')
                 ->name('adicional.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/tipos', 'TipoController@index')->name('tipos');
-            Route::get('/tipos/form/{id?}', 'TipoController@form')
+            Route::get('/types', 'TipoController@index')->name('tipos');
+            Route::get('/types/form/{id?}', 'TipoController@form')
                 ->name('tipo.form')
                 ->where('id', '[0-9]+');
-            Route::post('/tipos/create', 'TipoController@create')->name('tipo.create');
-            Route::post('/tipos/update/{id}', 'TipoController@update')
+            Route::post('/types/create', 'TipoController@create')->name('tipo.create');
+            Route::post('/types/update/{id}', 'TipoController@update')
                 ->name('tipo.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/combustiveis', 'CombustivelController@index')->name('combustiveis');
-            Route::get('/combustiveis/form/{id?}', 'CombustivelController@form')
+            Route::get('/fuel', 'CombustivelController@index')->name('combustiveis');
+            Route::get('/fuel/form/{id?}', 'CombustivelController@form')
                 ->name('combustivel.form')
                 ->where('id', '[0-9]+');
-            Route::post('/combustiveis/create', 'CombustivelController@create')->name('combustivel.create');
-            Route::post('/combustiveis/update/{id}', 'CombustivelController@update')
+            Route::post('/fuel/create', 'CombustivelController@create')->name('combustivel.create');
+            Route::post('/fuel/update/{id}', 'CombustivelController@update')
                 ->name('combustivel.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/cidades', 'CidadeController@index')->name('cidades');
-            Route::get('/cidades/form', 'CidadeController@form')
+            Route::get('/cities', 'CidadeController@index')->name('cidades');
+            Route::get('/cities/form', 'CidadeController@form')
                 ->name('cidade.form');
-            Route::post('/cidades/create', 'CidadeController@create')->name('cidade.create');
+            Route::post('/cities/create', 'CidadeController@create')->name('cidade.create');
 
-            Route::get('/depoimentos', 'DepoimentoController@index')->name('depoimentos');
-            Route::get('/depoimentos/form/{id?}', 'DepoimentoController@form')
+            Route::get('/testimonials', 'DepoimentoController@index')->name('depoimentos');
+            Route::get('/testimonials/form/{id?}', 'DepoimentoController@form')
                 ->name('depoimento.form')
                 ->where('id', '[0-9]+');
-            Route::post('/depoimentos/create', 'DepoimentoController@create')->name('depoimento.create');
-            Route::post('/depoimentos/update/{id}', 'DepoimentoController@update')
+            Route::post('/testimonials/create', 'DepoimentoController@create')->name('depoimento.create');
+            Route::post('/testimonials/update/{id}', 'DepoimentoController@update')
                 ->name('depoimento.update')
                 ->where('id', '[0-9]+');
         });
