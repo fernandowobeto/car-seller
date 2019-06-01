@@ -372,52 +372,6 @@
                 <aside class="col-md-3">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-calculator" aria-hidden="true"></i> Financing Calculator </h5>
-                        </div>
-                        <div class="financing_calculatoe">
-                            <form action="#" method="get">
-                                <div class="form-group">
-                                    <label class="form-label">Vehicle Price ($)</label>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Down Price ($)</label>
-                                    <input class="form-control" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Interest Rate</label>
-                                    <div class="select">
-                                        <select class="form-control select">
-                                            <option>12%</option>
-                                            <option>13%</option>
-                                            <option>14%</option>
-                                            <option>15%</option>
-                                            <option>16%</option>
-                                            <option>17%</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Period in Years</label>
-                                    <div class="select">
-                                        <select class="form-control">
-                                            <option>3 Year</option>
-                                            <option>4 Year</option>
-                                            <option>5 Year</option>
-                                            <option>6 Year</option>
-                                            <option>7 Year</option>
-                                            <option>8 Year</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-block">Calcuate</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="sidebar_widget">
-                        <div class="widget_heading">
                             <h5><i class="fa fa-address-card-o" aria-hidden="true"></i> Dealer Contact </h5>
                         </div>
                         <div class="dealer_detail"><img src="assets/images/dealer_img.jpg" alt="image">
