@@ -80,9 +80,13 @@ class IndexController extends Controller
         return view('about', compact('configuracao'));
     }
 
-    public function detail ($id)
+    public function detail($id)
     {
-        return view('detail');
+        $repo = new VeiculoRepository();
+
+        $veiculo = $repo->getDetalhesVeiculo($id);
+
+        return view('detail')->with('veiculo', $veiculo);
     }
 
     private function getGerais()
