@@ -63,12 +63,12 @@ Route::middleware('auth')->group(function () {
                 ->name('cor.update')
                 ->where('id', '[0-9]+');
 
-            Route::get('/exchanges', 'CambioController@index')->name('cambios');
-            Route::get('/exchanges/form/{id?}', 'CambioController@form')
+            Route::get('/transmissions', 'CambioController@index')->name('cambios');
+            Route::get('/transmissions/form/{id?}', 'CambioController@form')
                 ->name('cambio.form')
                 ->where('id', '[0-9]+');
-            Route::post('/exchanges/create', 'CambioController@create')->name('cambio.create');
-            Route::post('/exchanges/update/{id}', 'CambioController@update')
+            Route::post('/transmissions/create', 'CambioController@create')->name('cambio.create');
+            Route::post('/transmissions/update/{id}', 'CambioController@update')
                 ->name('cambio.update')
                 ->where('id', '[0-9]+');
 
