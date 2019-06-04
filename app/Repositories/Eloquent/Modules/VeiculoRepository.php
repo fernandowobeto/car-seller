@@ -42,6 +42,7 @@ class VeiculoRepository
                 'mo.name AS modelo_name',
                 'm.name AS marca_name',
                 'c.name AS cor_name',
+                'ca.name AS cambio_name',
                 'cb.name AS combustivel_name',
                 'ci.name AS cidade_name',
                 'e.uf'
@@ -50,6 +51,7 @@ class VeiculoRepository
             ->join('marcas as m', 'm.id', '=', 'mo.marca_id')
             ->join('tipos as t', 't.id', '=', 'v.tipo_id')
             ->join('cores as c', 'c.id', '=', 'v.cor_id')
+            ->join('cambios as ca', 'ca.id', '=', 'v.cambio_id')
             ->join('combustiveis as cb', 'cb.id', '=', 'v.combustivel_id')
             ->join('users as u', 'u.id', '=', 'v.user_id')
             ->join('cidades as ci', 'ci.id', '=', 'u.cidade_id', 'left')

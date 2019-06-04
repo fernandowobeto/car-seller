@@ -7,15 +7,7 @@
                 <div class="col-md-9">
                     <h2>{{$veiculo->marca_name}}, {{$veiculo->modelo_name}}</h2>
                     <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> {{$veiculo->cidade_name}}, {{$veiculo->uf}}</span></div>
-                    <div class="add_compare">
-                        <div class="checkbox">
-                            <input value="" id="compare14" type="checkbox">
-                            <label for="compare14">Add to Compare</label>
-                        </div>
-                        <div class="share_vehicle">
-                            <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></p>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-md-3">
                     <div class="price_info">
@@ -30,11 +22,9 @@
 
     <section class="listing_other_info secondary-bg">
         <div class="container">
-            <div id="filter_toggle" class="search_other"><i class="fa fa-filter" aria-hidden="true"></i> Search Car</div>
+            <div id="filter_toggle" class="search_other"><i class="fa fa-filter" aria-hidden="true"></i> Buscar</div>
             <div id="other_info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
             <div id="info_toggle">
-                <button type="button" data-toggle="modal" data-target="#schedule"><i class="fa fa-car" aria-hidden="true"></i> Schedule Test Drive</button>
-                <button type="button" data-toggle="modal" data-target="#make_offer"><i class="fa fa-money" aria-hidden="true"></i> Make an Offer</button>
                 <button type="button" data-toggle="modal" data-target="#email_friend"><i class="fa fa-envelope" aria-hidden="true"></i> Email to a Friend</button>
                 <button type="button" data-toggle="modal" data-target="#more_info"><i class="fa fa-file-text-o" aria-hidden="true"></i> Request More Info</button>
             </div>
@@ -145,28 +135,24 @@
                     <div class="main_features">
                         <ul>
                             <li><i class="fa fa-tachometer" aria-hidden="true"></i>
-                                <h5>13,000</h5>
-                                <p>Total Kilometres</p>
+                                <h5>{{$veiculo->kilometragem}}</h5>
+                                <p>Kilometragem</p>
                             </li>
                             <li><i class="fa fa-calendar" aria-hidden="true"></i>
-                                <h5>2010</h5>
-                                <p>Reg.Year</p>
+                                <h5>{{$veiculo->ano_modelo}}</h5>
+                                <p>Ano Modelo</p>
                             </li>
                             <li><i class="fa fa-cogs" aria-hidden="true"></i>
-                                <h5>Diesel</h5>
-                                <p>Fuel Type</p>
+                                <h5>{{$veiculo->combustivel_name}}</h5>
+                                <p>Combustível</p>
                             </li>
                             <li><i class="fa fa-power-off" aria-hidden="true"></i>
-                                <h5>Automatic</h5>
-                                <p>Transmission</p>
-                            </li>
-                            <li><i class="fa fa-superpowers" aria-hidden="true"></i>
-                                <h5>153KW</h5>
-                                <p>Engine</p>
+                                <h5>{{$veiculo->cambio_name}}</h5>
+                                <p>Transmissão</p>
                             </li>
                             <li><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                <h5>5</h5>
-                                <p>Seats</p>
+                                <h5>{{$veiculo->quantidade_portas}}</h5>
+                                <p>Portas</p>
                             </li>
                         </ul>
                     </div>
@@ -174,24 +160,14 @@
                         <div class="listing_detail_wrap">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs gray-bg" role="tablist">
-                                <li role="presentation" class="active"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab">Vehicle Overview </a></li>
-                                <li role="presentation"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specification</a></li>
-                                <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
+                                <li role="presentation" class="active"><a href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Especificações Técnicas</a></li>
+                                <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Acessórios</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <!-- vehicle-overview -->
-                                <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
-                                    <h4>What is Lorem Ipsum?</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <h4>What is Lorem Ipsum?</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-                                </div>
-
                                 <!-- Technical-Specification -->
-                                <div role="tabpanel" class="tab-pane" id="specification">
+                                <div role="tabpanel" class="tab-pane active" id="specification">
                                     <div class="table-responsive">
                                         <!--Basic-Info-Table-->
                                         <table>
@@ -334,14 +310,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!--Vehicle-Video-->
-                        <div class="video_wrap">
-                            <h6>Watch Video </h6>
-                            <div class="video-box">
-                                <iframe class="mfp-iframe" src="https://www.youtube.com/embed/rqSoXtKMU3Q" allowfullscreen></iframe>
                             </div>
                         </div>
 
