@@ -22,9 +22,9 @@ class IndexController extends Controller
 
     use Pagination;
 
-    private $veiculoRepository;
-    private $estatisticaRepository;
-    private $depoimentoRepository;
+    private VeiculoRepository $veiculoRepository;
+    private EstatisticaRepository $estatisticaRepository;
+    private DepoimentoRepository $depoimentoRepository;
 
     public function __construct()
     {
@@ -46,7 +46,7 @@ class IndexController extends Controller
         return view('home', $data);
     }
 
-    public function getModelos($id)
+    public function getModelos(int $id) :string
     {
         $modelos = Modelo::where([
             'marca_id' => $id

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('cidade_id');
-            $table->foreign('cidade_id')->references('id')->on('estados');
+            $table->foreign('cidade_id')->references('id')->on('cidades');
             $table->rememberToken();
             $table->timestamps();
         });
