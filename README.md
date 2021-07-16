@@ -1,6 +1,6 @@
 CarSeller
 =========
-Site e admin em PHP para compra/venda de veículos.
+Site e admin em PHP com laravel para compra/venda de veículos.
 
 * Cadastros
 	- Veículos
